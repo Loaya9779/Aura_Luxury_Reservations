@@ -45,7 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
         }
 
         if (state is LogInSuccessState) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Success')));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Login Success')));
+          Navigator.pushNamed(context, '/booking');
         }
       },
       child: Scaffold(
@@ -53,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/auth_images/auth_background.png'),
+              image: AssetImage('assets/auth_background.png'),
               fit: BoxFit.cover,
             ),
           ),

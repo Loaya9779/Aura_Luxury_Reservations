@@ -60,7 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/auth_images/auth_background.png'),
+              image: AssetImage('assets/auth_background.png'),
               fit: BoxFit.cover,
             ),
           ),
