@@ -1,6 +1,15 @@
+import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
+import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
+import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
+import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
+import 'package:aura_luxury_reservations/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 
@@ -9,11 +18,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (_) => AuthCubit())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/login',
+        routes: {
+          '/login': (_) => const LoginScreen(),
+          '/signup': (_) => const SignupScreen(),
+          '/forget-password': (_) => const ForgetPasswordScreen(),
+        },
       ),
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "765770993044",
+    "project_id": "lumiere-c377e",
+    "storage_bucket": "lumiere-c377e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765770993044:android:ab3924392c5f2cd2e65381",
+        "android_client_info": {
+          "package_name": "com.example.aura_luxury_reservations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHwhqbM3z3RZCShq8J1BiRcA2s7liksPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

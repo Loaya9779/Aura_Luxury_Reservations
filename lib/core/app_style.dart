@@ -55,7 +55,7 @@ class AppStyle {
   /// Label (Inter)
 
   static TextStyle labelLarge = GoogleFonts.inter(
-    fontSize: 14,
+    fontSize: 30,
     fontWeight: FontWeight.w600,
     letterSpacing: 1,
     color: AppColors.primary,
