@@ -22,7 +22,7 @@ class BookingHeader extends StatelessWidget {
               child: Center(
                 child: Text(
                   'UPCOMING RESERVATIONS',
-                  style: AppStyle.bodyMedium.copyWith(color: AppColors.primary),
+                  style: AppStyle.bodyLarge.copyWith(color: AppColors.primary),
                 ),
               ),
             ),

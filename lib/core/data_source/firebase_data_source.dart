@@ -141,6 +141,27 @@ culinary innovation.''',
     }
   }
 
+  // Future<void> bookRestaurant({
+  //   required ResturantModel restaurant,
+  //   required DateTime date,
+  //   required TimeOfDay time,
+  //   required int guests,
+  //   required BuildContext context,
+  // }) async {
+  //   final uid = FirebaseAuth.instance.currentUser!.uid;
+
+  //   await _firestore.collection("users").doc(uid).collection("bookings").add({
+  //     "restaurantId": restaurant.id,
+  //     "restaurantName": restaurant.name,
+  //     "image": restaurant.image,
+  //     "description": restaurant.description,
+  //     "date": DateFormat("dd/MM/yyyy").format(date),
+  //     "time": time.format(context),
+  //     "guestCount": guests,
+  //     "createdAt": FieldValue.serverTimestamp(),
+  //   });
+  // }
+
   Future<void> bookRestaurant({
     required ResturantModel restaurant,
     required DateTime date,
@@ -150,15 +171,19 @@ culinary innovation.''',
   }) async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
-    await _firestore.collection("users").doc(uid).collection("bookings").add({
-      "restaurantId": restaurant.id,
-      "restaurantName": restaurant.name,
-      "image": restaurant.image,
-      "description": restaurant.description,
-      "date": DateFormat("dd/MM/yyyy").format(date),
-      "time": time.format(context),
-      "guestCount": guests,
-      "createdAt": FieldValue.serverTimestamp(),
-    });
+    await _firestore.collection("users").doc(uid).set({
+      "bookings": FieldValue.arrayUnion([
+        {
+          "restaurantId": restaurant.id,
+          "restaurantName": restaurant.name,
+          "image": restaurant.image,
+          "description": restaurant.description,
+          "date": DateFormat("dd/MM/yyyy").format(date),
+          "time": time.format(context),
+          "guestCount": guests,
+          "createdAt": Timestamp.now(),
+        },
+      ]),
+    }, SetOptions(merge: true));
   }
 }
