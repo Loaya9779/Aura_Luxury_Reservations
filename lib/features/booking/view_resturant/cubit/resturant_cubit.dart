@@ -1,0 +1,21 @@
+import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/satates.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class ResturantCubit extends Cubit<ResturantState> {
+  ResturantCubit() : super(ResturantInitial());
+
+  final FirebaseDataSource firebaseDataSource = FirebaseDataSource();
+
+  Future<void> getResturants() async {
+    emit(ResturantLoading());
+
+    try {
+      final restaurants = await firebaseDataSource.getResturants();
+      
+      emit(ResturantSuccess(resturants: restaurants));
+    } catch (e) {
+      emit(ResturantError(error: e.toString()));
+    }
+  }
+}

@@ -1,8 +1,9 @@
+
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
-import 'package:aura_luxury_reservations/features/booking/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/details_resturant/screen/booking_details_screen.dart';
-import 'package:aura_luxury_reservations/features/booking/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/satates.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/widget/custom_buttom_book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,17 +13,17 @@ class ResturantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BookingCubit, BookingState>(
+    return BlocBuilder<ResturantCubit, ResturantState>(
       builder: (context, state) {
-        if (state is BookingLoading) {
+        if (state is ResturantLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (state is BookingSuccess) {
+        if (state is ResturantSuccess) {
           return ListView.builder(
-            itemCount: state.bookings.length,
+            itemCount: state.resturants.length,
             itemBuilder: (context, index) {
-              final restaurant = state.bookings[index];
+              final restaurant = state.resturants[index];
 
               return Container(
                 margin: const EdgeInsets.all(12),
@@ -66,7 +67,7 @@ class ResturantList extends StatelessWidget {
           );
         }
 
-        if (state is BookingError) {
+        if (state is ResturantError) {
           return Center(child: Text(state.error));
         }
 

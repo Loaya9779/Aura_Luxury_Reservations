@@ -3,6 +3,7 @@ import 'package:aura_luxury_reservations/features/auth/forget_password/forget_pa
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
 import 'package:aura_luxury_reservations/features/booking/cubit/booking_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/screen/booking_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +24,8 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => AuthCubit()),
-        BlocProvider(create: (_) => BookingCubit()..getBookings()),
+        BlocProvider(create: (_) => BookingCubit()),
+        BlocProvider(create: (_) => ResturantCubit()..getResturants()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

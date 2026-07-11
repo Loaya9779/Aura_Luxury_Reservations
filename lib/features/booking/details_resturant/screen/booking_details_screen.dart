@@ -14,15 +14,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class BookingDetailsScreen extends StatelessWidget {
   final ResturantModel restaurant;
 
-  const BookingDetailsScreen({
-    super.key,
-    required this.restaurant,
-  });
+  const BookingDetailsScreen({super.key, required this.restaurant});
 
-  Future<void> _pickDate(
-    BuildContext context,
-    BookingCubit cubit,
-  ) async {
+  Future<void> _pickDate(BuildContext context, BookingCubit cubit) async {
     final date = await showDatePicker(
       context: context,
       firstDate: DateTime.now(),
@@ -35,10 +29,7 @@ class BookingDetailsScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _pickTime(
-    BuildContext context,
-    BookingCubit cubit,
-  ) async {
+  Future<void> _pickTime(BuildContext context, BookingCubit cubit) async {
     final time = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -55,22 +46,18 @@ class BookingDetailsScreen extends StatelessWidget {
 
     return BlocListener<BookingCubit, BookingState>(
       listener: (context, state) {
-        if (state is BookingSuccess) {
+        if (state is BookingCompleted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Reservation Confirmed"),
-            ),
+            const SnackBar(content: Text("Reservation Confirmed")),
           );
 
-          Navigator.pop(context);
+          Navigator.pop(context, true);
         }
 
         if (state is BookingError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-            ),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.error)));
         }
       },
       child: Scaffold(
@@ -81,9 +68,7 @@ class BookingDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BookingImage(
-                image: restaurant.image,
-              ),
+              BookingImage(image: restaurant.image),
 
               const SizedBox(height: 20),
 
@@ -117,9 +102,7 @@ class BookingDetailsScreen extends StatelessWidget {
                   if (cubit.selectedDate == null ||
                       cubit.selectedTime == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Choose date and time"),
-                      ),
+                      const SnackBar(content: Text("Choose date and time")),
                     );
                     return;
                   }
