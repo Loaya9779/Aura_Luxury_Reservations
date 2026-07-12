@@ -9,10 +9,10 @@ class ResturantCubit extends Cubit<ResturantState> {
 
   Future<void> getResturants() async {
     emit(ResturantLoading());
-
+    await Future.delayed(const Duration(milliseconds: 500));
     try {
       final restaurants = await firebaseDataSource.getResturants();
-      
+
       emit(ResturantSuccess(resturants: restaurants));
     } catch (e) {
       emit(ResturantError(error: e.toString()));
