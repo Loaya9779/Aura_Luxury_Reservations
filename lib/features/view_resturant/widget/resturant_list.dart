@@ -1,11 +1,11 @@
 
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
-import 'package:aura_luxury_reservations/features/booking/details_resturant/screen/booking_details_screen.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/satates.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/widget/custom_buttom_book.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/widget/restaurant_shimmer.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/screen/booking_details_screen.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/cubit/resturant_cubit.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/widget/custom_buttom_book.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/widget/restaurant_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

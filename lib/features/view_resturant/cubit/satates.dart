@@ -1,4 +1,4 @@
-import 'package:aura_luxury_reservations/features/booking/model/resturant_model.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 
 sealed class ResturantState {}
 

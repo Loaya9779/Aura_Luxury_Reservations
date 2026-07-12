@@ -2,11 +2,7 @@ import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitleWidget extends StatelessWidget {
-  const HomeTitleWidget({
-    super.key,
-    required this.width,
-    required this.height,
-  });
+  const HomeTitleWidget({super.key, required this.width, required this.height});
 
   final double width;
   final double height;
@@ -24,7 +20,7 @@ class HomeTitleWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-    
+
         SizedBox(height: height * 0.01),
         Row(
           children: [
@@ -37,11 +33,16 @@ class HomeTitleWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Text(
-              "View All",
-              style: TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w500,
+            TextButton(
+              onPressed: () {
+              Navigator.pushNamed(context, "/resturants");
+              },
+              child: Text(
+                "View All",
+                style: TextStyle(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],

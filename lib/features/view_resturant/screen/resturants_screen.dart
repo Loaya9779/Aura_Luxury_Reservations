@@ -1,11 +1,11 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/widget/booking_header.dart';
-import 'package:aura_luxury_reservations/features/booking/view_resturant/widget/resturant_list.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/widget/booking_header.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/widget/resturant_list.dart';
 import 'package:flutter/material.dart';
 
-class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
+class ResturantsScreen extends StatelessWidget {
+  const ResturantsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

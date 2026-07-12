@@ -1,5 +1,5 @@
 import 'package:aura_luxury_reservations/features/auth/model/user_model.dart';
-import 'package:aura_luxury_reservations/features/booking/model/resturant_model.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

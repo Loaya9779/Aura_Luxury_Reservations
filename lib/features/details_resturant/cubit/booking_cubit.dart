@@ -1,6 +1,6 @@
 import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
-import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/satates.dart';
-import 'package:aura_luxury_reservations/features/booking/model/resturant_model.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
