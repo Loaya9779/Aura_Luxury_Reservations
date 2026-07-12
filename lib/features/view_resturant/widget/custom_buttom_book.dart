@@ -1,5 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtomBook extends StatelessWidget {
   final VoidCallback onPressed;
@@ -24,9 +26,9 @@ class CustomButtomBook extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        minimumSize: const Size(double.infinity, 50),
+        minimumSize: Size(double.infinity, 70.h),
       ),
-      child: Text(title),
+      child: Text(title , style: AppStyle.labelSmall,),
     );
   }
 }

@@ -10,16 +10,18 @@ import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cu
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
   // await firebaseDataSource.addResturants();
-  runApp(const MainApp());
+  runApp(DevicePreview(builder: (_) => const MainApp(), enabled: true));
 }
 
 class MainApp extends StatelessWidget {
@@ -34,18 +36,24 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => ResturantCubit()..getResturants()),
         BlocProvider(create: (_) => OnboardingCubit()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/splash', //'/splash',
-        routes: {
-          '/splash': (_) => const SplashScreen(),
-          '/onboarding': (_) => const OnboardingScreen(),
-          '/signup': (_) => const SignupScreen(),
-          '/login': (_) => const LoginScreen(),
-          '/forget-password': (_) => const ForgetPasswordScreen(),
-          '/home': (_) => const HomeScreen(),
-          '/resturants': (_) => const ResturantsScreen(),
-        },
+      child: ScreenUtilInit(
+        designSize: const Size(393, 852),
+        useInheritedMediaQuery: true,
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/splash', //'/splash',
+          routes: {
+            '/splash': (_) => const SplashScreen(),
+            '/onboarding': (_) => const OnboardingScreen(),
+            '/signup': (_) => const SignupScreen(),
+            '/login': (_) => const LoginScreen(),
+            '/forget-password': (_) => const ForgetPasswordScreen(),
+            '/home': (_) => const HomeScreen(),
+            '/resturants': (_) => const ResturantsScreen(),
+          },
+        ),
       ),
     );
   }
