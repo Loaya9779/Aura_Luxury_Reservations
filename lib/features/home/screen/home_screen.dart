@@ -71,7 +71,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: height * 0.02),
 
                       SizedBox(height: height * 0.01),
-                      HomeTitleWidget(width: width, height: height),
+                      HomeTitleWidget(
+                        width: width,
+                        height: height,
+                        title: 'Featured For You',
+                        subtitle: 'Selected for your exquisite taste',
+                        buttonText: "View All",
+                        onTap: () {
+                          Navigator.pushNamed(context, "/resturants");
+                        },
+                      ),
                       SizedBox(height: height * 0.03),
                       BlocBuilder<HomeCubit, HomeStates>(
                         builder: (context, state) {
@@ -101,6 +110,46 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                 itemCount: state.restaurants.length,
                               ),
+                            );
+                          }
+                          return SizedBox();
+                        },
+                      ),
+                      SizedBox(height: height * 0.03),
+                      Divider(color: AppColors.primary),
+                      SizedBox(height: height * 0.02),
+                      HomeTitleWidget(
+                        width: width,
+                        height: height,
+                        title: 'Trending Now 🔥',
+                        subtitle: 'Trending Restaurants nowadays',
+                      ),
+                      SizedBox(height: height * 0.03),
+
+                      BlocBuilder<HomeCubit, HomeStates>(
+                        builder: (context, state) {
+                          if (state is HomeError) {
+                            return Text(state.errorMessage);
+                          }
+                          if (state is HomeSuccess) {
+                            return ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Center(
+                                  child: RestaurantCardWidget(
+                                    width: width,
+                                    height: height,
+                                    resturant: state.restaurants[index],
+                                    isTrending: true,
+                                  ),
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                    return SizedBox(height: height * 0.03);
+                                  },
+                              itemCount: state.restaurants.length,
                             );
                           }
                           return SizedBox();

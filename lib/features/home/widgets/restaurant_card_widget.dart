@@ -9,11 +9,13 @@ class RestaurantCardWidget extends StatelessWidget {
     required this.width,
     required this.height,
     required this.resturant,
+    this.isTrending = false,
   });
 
   final double width;
   final double height;
   final ResturantModel resturant;
+  final bool isTrending;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,25 @@ class RestaurantCardWidget extends StatelessWidget {
               child: Image.network(resturant.image, fit: BoxFit.cover),
             ),
           ),
+          if (isTrending)
+            Positioned(
+              top: 15,
+              right: -15,
+              child: Container(
+                width: width * 0.3,
+                height: height * 0.05,
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppColors.primary),
+                ),
+                child: Icon(
+                  Icons.workspace_premium_outlined,
+                  color: AppColors.primary,
+                  size: 18,
+                ),
+              ),
+            ),
           Positioned(
             bottom: height * 0.03,
             left: width * 0.05,
