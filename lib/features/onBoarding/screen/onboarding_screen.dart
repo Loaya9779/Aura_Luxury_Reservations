@@ -1,9 +1,12 @@
 import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_buttom.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cubit.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/helper/onboarding_items.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/widgets/animated_dot_container.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -27,7 +30,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _pageController.dispose();
   }
 
-  int currentPage = 0;
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.sizeOf(context).height;
@@ -53,10 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 300,
                   child: PageView.builder(
                     controller: _pageController,
-                    onPageChanged: (value) {
-                      currentPage = value;
-                      setState(() {});
-                    },
+                    onPageChanged: context.read<OnboardingCubit>().setPage,
                     itemCount: OnboardingItems.onboardingItems.length,
                     itemBuilder: (context, index) {
                       return OnboardingItem(
@@ -73,8 +72,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 3,
                     itemBuilder: (context, index) {
-                      return AnimatedDotContainer(
-                        isSelected: currentPage == index,
+                      return BlocBuilder<OnboardingCubit, OnboardingStates>(
+                        builder: (context, state) {
+                          return AnimatedDotContainer(
+                            isSelected: state.currentPage == index,
+                          );
+                        },
                       );
                     },
                   ),
@@ -82,14 +85,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 SizedBox(height: 30),
                 CustomButtom(title: "Get Started", onPressed: () {}),
                 SizedBox(height: 15),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Already a member?", style: AppStyle.bodySmall),
                     TextButton(
                       onPressed: () {},
-
                       child: Text("SIGN IN", style: AppStyle.labelMedium),
                     ),
                   ],
