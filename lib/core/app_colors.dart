@@ -20,6 +20,7 @@ class AppColors {
 
   // Secondary
   static const Color secondary = Color(0xFFEAC249);
+  static const Color secondarySplash = Color(0xFFF2CA50);
 
   // Text
   static const Color white = Color(0xFFE5E2E1);
