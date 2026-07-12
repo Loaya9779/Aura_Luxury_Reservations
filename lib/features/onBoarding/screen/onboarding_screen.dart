@@ -37,7 +37,7 @@ class OnboardingScreen extends StatelessWidget {
                   CustomButtom(
                     title: "Get Started",
                     onPressed: () =>
-                        Navigator.pushReplacementNamed(context, "signup"),
+                        Navigator.pushReplacementNamed(context, "/signup"),
                   ),
                   SizedBox(height: 15),
                   AlreadyMemberRow(),
