@@ -5,6 +5,10 @@ import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart
 import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/screen/booking_screen.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cubit.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
+import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
+import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +35,9 @@ class MainApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/home', //'/splash',
         routes: {
+          '/splash': (_) => const SplashScreen(),
           '/login': (_) => const LoginScreen(),
           '/signup': (_) => const SignupScreen(),
           '/forget-password': (_) => const ForgetPasswordScreen(),

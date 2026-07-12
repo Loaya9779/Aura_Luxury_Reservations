@@ -20,13 +20,14 @@ class AppColors {
 
   // Secondary
   static const Color secondary = Color(0xFFEAC249);
+  static const Color secondarySplash = Color(0xFFF2CA50);
 
   // Text
   static const Color white = Color(0xFFE5E2E1);
   static const Color black = Color(0xFF131313);
 
   static const Color textPrimary = Color(0xFFE5E2E1);
-  static const Color textSecondary = Color(0x99E5E2E1); // 60% opacity
+  static const Color textSecondary = Color(0xffD0C5AF); // 60% opacity
 
   // Border
   static const Color outline = Color(0xFF99907C);
