@@ -2,6 +2,9 @@ import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
+import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/booking_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/view_resturant/screen/booking_screen.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cubit.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
@@ -14,6 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
+  // await firebaseDataSource.addResturants();
   runApp(const MainApp());
 }
 
@@ -23,7 +28,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => AuthCubit())],
+      providers: [
+        BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => BookingCubit()),
+        BlocProvider(create: (_) => ResturantCubit()..getResturants()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/home', //'/splash',
@@ -32,10 +41,7 @@ class MainApp extends StatelessWidget {
           '/login': (_) => const LoginScreen(),
           '/signup': (_) => const SignupScreen(),
           '/forget-password': (_) => const ForgetPasswordScreen(),
-          '/onboarding': (_) => BlocProvider(
-            create: (context) => OnboardingCubit(),
-            child: const OnboardingScreen(),
-          ),
+          '/booking': (_) => const BookingScreen(),
         },
       ),
     );

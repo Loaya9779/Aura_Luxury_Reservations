@@ -40,7 +40,7 @@ class AppStyle {
   /// Body (Inter)
 
   static TextStyle bodyLarge = GoogleFonts.inter(
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: FontWeight.w400,
     height: 1.6,
     color: AppColors.textSecondary,
