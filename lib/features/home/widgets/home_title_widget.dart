@@ -21,7 +21,7 @@ class HomeTitleWidget extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: height * 0.01),
+        SizedBox(height: height * 0.001),
         Row(
           children: [
             Text(
@@ -35,7 +35,7 @@ class HomeTitleWidget extends StatelessWidget {
             const Spacer(),
             TextButton(
               onPressed: () {
-              Navigator.pushNamed(context, "/resturants");
+                Navigator.pushNamed(context, "/resturants");
               },
               child: Text(
                 "View All",

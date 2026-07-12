@@ -1,4 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/screen/booking_details_screen.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantCardWidget extends StatelessWidget {
@@ -6,15 +8,24 @@ class RestaurantCardWidget extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
+    required this.resturant,
   });
 
   final double width;
   final double height;
+  final ResturantModel resturant;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => BookingDetailsScreen(restaurant: resturant),
+          ),
+        );
+      },
       child: Stack(
         children: [
           Container(
@@ -26,10 +37,7 @@ class RestaurantCardWidget extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: Image.asset(
-                "assets/images/splash.png",
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(resturant.image, fit: BoxFit.cover),
             ),
           ),
           Positioned(
@@ -41,7 +49,7 @@ class RestaurantCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "4.5",
+                      resturant.rating.toString(),
                       style: TextStyle(
                         color: AppColors.primary,
                         fontSize: width * 0.04,
@@ -57,7 +65,7 @@ class RestaurantCardWidget extends StatelessWidget {
                 ),
                 SizedBox(width: width * 0.01),
                 Text(
-                  "L'Oiseau Bleu",
+                  resturant.name,
                   style: TextStyle(
                     color: AppColors.white,
                     fontSize: width * 0.06,
@@ -67,7 +75,7 @@ class RestaurantCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Modern French",
+                      resturant.name,
                       style: TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: width * 0.04,
@@ -83,7 +91,7 @@ class RestaurantCardWidget extends StatelessWidget {
                     ),
                     SizedBox(width: width * 0.01),
                     Text(
-                      "Paris",
+                      resturant.location.toString(),
                       style: TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: width * 0.04,
