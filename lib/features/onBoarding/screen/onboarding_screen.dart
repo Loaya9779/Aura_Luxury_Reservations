@@ -15,6 +15,7 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/onboarding_background.png"),
@@ -24,22 +25,24 @@ class OnboardingScreen extends StatelessWidget {
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("LUMIÈRE", style: AppStyle.labelLarge),
-                SizedBox(height: height * 0.25),
-                TextPageViewBuilder(),
-                AnimatedDots(),
-                SizedBox(height: 30),
-                CustomButtom(
-                  title: "Get Started",
-                  onPressed: () =>
-                      Navigator.pushReplacementNamed(context, "signup"),
-                ),
-                SizedBox(height: 15),
-                AlreadyMemberRow(),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("LUMIÈRE", style: AppStyle.labelLarge),
+                  SizedBox(height: height * 0.25),
+                  TextPageViewBuilder(),
+                  AnimatedDots(),
+                  SizedBox(height: 30),
+                  CustomButtom(
+                    title: "Get Started",
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, "signup"),
+                  ),
+                  SizedBox(height: 15),
+                  AlreadyMemberRow(),
+                ],
+              ),
             ),
           ),
         ),
