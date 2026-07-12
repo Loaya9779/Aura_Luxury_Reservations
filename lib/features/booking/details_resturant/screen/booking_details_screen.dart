@@ -1,7 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
-import 'package:aura_luxury_reservations/features/booking/cubit/booking_cubit.dart';
-import 'package:aura_luxury_reservations/features/booking/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/booking_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/satates.dart';
 import 'package:aura_luxury_reservations/features/booking/details_resturant/widgets/booking_date_time.dart';
 import 'package:aura_luxury_reservations/features/booking/details_resturant/widgets/booking_image.dart';
 import 'package:aura_luxury_reservations/features/booking/details_resturant/widgets/booking_info.dart';

@@ -1,8 +1,9 @@
+import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
-import 'package:aura_luxury_reservations/features/booking/cubit/booking_cubit.dart';
+import 'package:aura_luxury_reservations/features/booking/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/cubit/resturant_cubit.dart';
 import 'package:aura_luxury_reservations/features/booking/view_resturant/screen/booking_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
@@ -13,6 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseDataSource firebaseDataSource = FirebaseDataSource();
+  await firebaseDataSource.addResturants();
   runApp(const MainApp());
 }
 

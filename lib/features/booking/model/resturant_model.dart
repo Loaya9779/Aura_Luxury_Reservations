@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ResturantModel {
@@ -8,6 +9,8 @@ class ResturantModel {
   final String? guestCount;
   final String? date;
   final String? time;
+  final String?location;
+  final String? rating;
 
   ResturantModel({
     this.id,
@@ -17,6 +20,7 @@ class ResturantModel {
     this.date,
     this.time,
     this.guestCount,
+    this.location, this.rating
   });
 
   Map<String, dynamic> toJson() => {
@@ -26,6 +30,8 @@ class ResturantModel {
     'guestCount': guestCount,
     'date': date,
     'time': time,
+    'location': location,
+    'rating': rating
   };
 
  factory ResturantModel.fromFirestore(DocumentSnapshot doc) {
@@ -39,6 +45,8 @@ class ResturantModel {
     guestCount: json['guestCount'] as String?,
     date: json['date'] as String?,
     time: json['time'] as String?,
+    location: json['location'] as String?,
+    rating: json['rating'] as String?
   );
 }
 }

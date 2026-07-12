@@ -74,32 +74,32 @@ class FirebaseDataSource {
       ResturantModel(
         id: "",
         name: "Mizu Zen",
-        image:
-            "https://drive.google.com/file/d/1UTFGqPPEljNjkBQvEz4Hy5UZHuxeydSX/view?usp=drive_link",
-        description: '''Mizu Zen offers a refined Japanese dining
-experience where traditional flavors meet
-modern presentation. Enjoy premium sushi,
-fresh sashimi, and signature dishes crafted
+        image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
+        description:
+            '''Mizu Zen offers a refined Japanese dining experience where traditional flavors meet
+modern presentation. Enjoy premium sushi, fresh sashimi, and signature dishes crafted
 with the finest ingredients in a peaceful,
 elegant atmosphere.''',
+        location: '',
+        rating: '',
       ),
       ResturantModel(
         id: "",
         name: "L'Eclat d'Or",
-        image:
-            "https://drive.google.com/file/d/1VyxePNQ_WbosNpg4dYsV9GPLvVeo2CGm/view?usp=drive_link",
+        image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
         description: '''L'Eclat d'Or delivers an exceptional fine
 dining experience inspired by classic
 French cuisine. Every plate is prepared
 with seasonal ingredients, artistic
 presentation, and impeccable service
 to create unforgettable moments.''',
+        location: '',
+        rating: '',
       ),
       ResturantModel(
         id: "",
         name: "L'Oiseau Bleu Interior",
-        image:
-            "https://drive.google.com/file/d/1bQldl1o9IorcA0LZ5ytBpa_SHZKXadns/view?usp=drive_link",
+        image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
         description: '''L'Oiseau Bleu redefines contemporary
 French gastronomy under the vision of
 Chef Marcelle Vasseur. Every dish is a
@@ -108,6 +108,8 @@ sourced from exclusive coastal estates.
 The atmosphere is curated for those
 who value discretion as much as
 culinary innovation.''',
+        location: '',
+        rating: '',
       ),
     ];
 
