@@ -2,6 +2,8 @@ import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cubit.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
 import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
@@ -30,7 +32,10 @@ class MainApp extends StatelessWidget {
           '/login': (_) => const LoginScreen(),
           '/signup': (_) => const SignupScreen(),
           '/forget-password': (_) => const ForgetPasswordScreen(),
-          '/home': (_) => const HomeScreen(),
+          '/onboarding': (_) => BlocProvider(
+            create: (context) => OnboardingCubit(),
+            child: const OnboardingScreen(),
+          ),
         },
       ),
     );

@@ -1,3 +1,8 @@
+import 'package:aura_luxury_reservations/core/app_style.dart';
+import 'package:aura_luxury_reservations/core/widgets/custom_buttom.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/widgets/already_member_row.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/widgets/animated_dots.dart';
+import 'package:aura_luxury_reservations/features/onBoarding/widgets/text_pageview_builder.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -5,6 +10,43 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final double height = MediaQuery.sizeOf(context).height;
+
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/onboarding_background.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("LUMIÈRE", style: AppStyle.labelLarge),
+                  SizedBox(height: height * 0.25),
+                  TextPageViewBuilder(),
+                  AnimatedDots(),
+                  SizedBox(height: 30),
+                  CustomButtom(
+                    title: "Get Started",
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, "/signup"),
+                  ),
+                  SizedBox(height: 15),
+                  AlreadyMemberRow(),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
