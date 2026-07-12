@@ -4,12 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
-    super.key,
+    super.key, required this.onChanged, required this.controller, required this.focusNode,
   });
+    final TextEditingController controller;
+  final ValueChanged<String> onChanged;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
+      controller: controller,
+      focusNode: focusNode,
       cursorColor: AppColors.primary,
       style: GoogleFonts.hankenGrotesk(
         color: Colors.white,
