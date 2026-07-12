@@ -26,7 +26,7 @@ class AppColors {
   static const Color black = Color(0xFF131313);
 
   static const Color textPrimary = Color(0xFFE5E2E1);
-  static const Color textSecondary = Color(0x99E5E2E1); // 60% opacity
+  static const Color textSecondary = Color(0xffD0C5AF); // 60% opacity
 
   // Border
   static const Color outline = Color(0xFF99907C);

@@ -6,6 +6,14 @@ import 'app_colors.dart';
 class AppStyle {
   /// Headline (Hanken Grotesk)
 
+  static TextStyle headlineExtraLarge = GoogleFonts.hankenGrotesk(
+    fontSize: 40,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.6,
+    height: 1.2,
+    color: AppColors.textPrimary,
+  );
+
   static TextStyle headlineLarge = GoogleFonts.hankenGrotesk(
     fontSize: 32,
     fontWeight: FontWeight.w400,
@@ -35,14 +43,14 @@ class AppStyle {
     fontSize: 18,
     fontWeight: FontWeight.w400,
     height: 1.6,
-    color: AppColors.textPrimary,
+    color: AppColors.textSecondary,
   );
 
   static TextStyle bodyMedium = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.5,
-    color: AppColors.textPrimary,
+    color: AppColors.textSecondary,
   );
 
   static TextStyle bodySmall = GoogleFonts.inter(
@@ -53,6 +61,13 @@ class AppStyle {
   );
 
   /// Label (Inter)
+
+  static TextStyle labelExtraLarge = GoogleFonts.inter(
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1,
+    color: AppColors.primary,
+  );
 
   static TextStyle labelLarge = GoogleFonts.inter(
     fontSize: 30,
