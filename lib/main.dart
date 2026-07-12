@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
       providers: [BlocProvider(create: (_) => AuthCubit())],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/onboarding',
+        initialRoute: '/login',
         routes: {
           '/login': (_) => const LoginScreen(),
           '/signup': (_) => const SignupScreen(),
