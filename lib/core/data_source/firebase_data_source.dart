@@ -70,8 +70,8 @@ class FirebaseDataSource {
   }
 
   Future<void> addResturants() async {
-    final List<ResturantModel> resturants = [
-      ResturantModel(
+    final List<RestaurantModel> resturants = [
+      RestaurantModel(
         id: "",
         name: "Mizu Zen",
         image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
@@ -83,7 +83,7 @@ elegant atmosphere.''',
         location: '',
         rating: '',
       ),
-      ResturantModel(
+      RestaurantModel(
         id: "",
         name: "L'Eclat d'Or",
         image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
@@ -96,7 +96,7 @@ to create unforgettable moments.''',
         location: '',
         rating: '',
       ),
-      ResturantModel(
+      RestaurantModel(
         id: "",
         name: "L'Oiseau Bleu Interior",
         image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
@@ -124,7 +124,7 @@ culinary innovation.''',
     }
   }
 
-  Future<List<ResturantModel>> getResturants() async {
+  Future<List<RestaurantModel>> getResturants() async {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
@@ -135,7 +135,7 @@ culinary innovation.''',
       }
 
       return snapshot.docs
-          .map((doc) => ResturantModel.fromFirestore(doc))
+          .map((doc) => RestaurantModel.fromFirestore(doc))
           .toList();
     } catch (e) {
       print("firebase: $e");
@@ -165,7 +165,7 @@ culinary innovation.''',
   // }
 
   Future<void> bookRestaurant({
-    required ResturantModel restaurant,
+    required RestaurantModel restaurant,
     required DateTime date,
     required TimeOfDay time,
     required int guests,

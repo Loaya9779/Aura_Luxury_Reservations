@@ -1,7 +1,6 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ResturantModel {
+class RestaurantModel {
   final String? id;
   final String name;
   final String image;
@@ -9,10 +8,10 @@ class ResturantModel {
   final String? guestCount;
   final String? date;
   final String? time;
-  final String?location;
+  final String? location;
   final String? rating;
 
-  ResturantModel({
+  RestaurantModel({
     this.id,
     required this.name,
     required this.image,
@@ -20,7 +19,8 @@ class ResturantModel {
     this.date,
     this.time,
     this.guestCount,
-    this.location, this.rating
+    this.location,
+    this.rating,
   });
 
   Map<String, dynamic> toJson() => {
@@ -31,22 +31,22 @@ class ResturantModel {
     'date': date,
     'time': time,
     'location': location,
-    'rating': rating
+    'rating': rating,
   };
 
- factory ResturantModel.fromFirestore(DocumentSnapshot doc) {
-  final json = doc.data() as Map<String, dynamic>;
+  factory RestaurantModel.fromFirestore(DocumentSnapshot doc) {
+    final json = doc.data() as Map<String, dynamic>;
 
-  return ResturantModel(
-    id: doc.id,
-    name: json['name'] as String,
-    image: json['image'],
-    description: json['description'] as String,
-    guestCount: json['guestCount'] as String?,
-    date: json['date'] as String?,
-    time: json['time'] as String?,
-    location: json['location'] as String?,
-    rating: json['rating'] as String?
-  );
-}
+    return RestaurantModel(
+      id: doc.id,
+      name: json['name'] as String,
+      image: json['image'],
+      description: json['description'] as String,
+      guestCount: json['guestCount'] as String?,
+      date: json['date'] as String?,
+      time: json['time'] as String?,
+      location: json['location'] as String?,
+      rating: json['rating'] as String?,
+    );
+  }
 }

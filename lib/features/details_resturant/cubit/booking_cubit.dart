@@ -14,7 +14,7 @@ class BookingCubit extends Cubit<BookingState> {
   int guests = 1;
 
   Future<void> bookRestaurant({
-    required ResturantModel restaurant,
+    required RestaurantModel restaurant,
     required DateTime date,
     required TimeOfDay time,
     required int guests,
