@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.surface,
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(65),
-          child: AppBarWidget(),
+          child: AppBarWidget(isHome: true),
         ),
         body: Stack(
           children: [
