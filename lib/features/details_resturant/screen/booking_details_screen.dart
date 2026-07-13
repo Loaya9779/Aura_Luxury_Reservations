@@ -51,7 +51,7 @@ class BookingDetailsScreen extends StatelessWidget {
             const SnackBar(content: Text("Reservation Confirmed")),
           );
 
-          Navigator.pop(context, true);
+          Navigator.pushNamed(context, '/confirmation-booking');
         }
 
         if (state is BookingError) {
