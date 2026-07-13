@@ -66,6 +66,13 @@ class AppStyle {
     color: AppColors.textSecondary,
   );
 
+  static TextStyle bodyExtraSmall = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+    color: AppColors.textSecondary,
+  );
+
   /// Label (Inter)
 
   static TextStyle labelExtraLarge = GoogleFonts.inter(
