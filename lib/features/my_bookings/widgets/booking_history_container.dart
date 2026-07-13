@@ -23,8 +23,8 @@ class BookingHistoryContainer extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(10),
             child: Image.asset(
               "assets/images/splash.png",
-              height: height * 0.15,
-              width: width * 0.15,
+              height: height * 0.12,
+              width: width * 0.25,
               fit: BoxFit.fill,
             ),
           ),
