@@ -36,6 +36,12 @@ class AppStyle {
     height: 1.3,
     color: AppColors.textPrimary,
   );
+  static TextStyle headlineExtraSmall = GoogleFonts.hankenGrotesk(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+    color: AppColors.textPrimary,
+  );
 
   /// Body (Inter)
 
