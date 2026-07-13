@@ -19,21 +19,30 @@ class BookingHistoryContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            "assets/images/splash.png",
-            height: height * 0.15,
-            width: width * 0.15,
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(10),
+            child: Image.asset(
+              "assets/images/splash.png",
+              height: height * 0.15,
+              width: width * 0.15,
+              fit: BoxFit.fill,
+            ),
           ),
-          Column(
-            children: [
-              Text("Restaurant Name", style: AppStyle.headlineExtraSmall),
-              Text(
-                "Date Time and Guests",
-                style: AppStyle.bodyExtraSmall.copyWith(
-                  color: AppColors.textSecondary.withValues(alpha: 0.5),
-                ),
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: width * 0.3),
+              child: Column(
+                children: [
+                  Text("Restaurant Name", style: AppStyle.headlineExtraSmall),
+                  Text(
+                    "Date Time and Guests",
+                    style: AppStyle.bodyExtraSmall.copyWith(
+                      color: AppColors.textSecondary.withValues(alpha: 0.5),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
           TextButton(
             onPressed: () {},
