@@ -76,6 +76,13 @@ class AppStyle {
     color: AppColors.primary,
   );
 
+  static TextStyle labelRegular = GoogleFonts.inter(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1.5,
+    color: AppColors.primary,
+  );
+
   static TextStyle labelMedium = GoogleFonts.inter(
     fontSize: 12,
     fontWeight: FontWeight.w600,
