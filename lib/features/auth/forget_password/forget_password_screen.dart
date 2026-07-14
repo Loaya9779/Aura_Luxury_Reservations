@@ -61,7 +61,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                'assets/auth_images/auth_background.png',
+                'assets/images/auth_background.png',
               ),
               fit: BoxFit.cover,
             ),

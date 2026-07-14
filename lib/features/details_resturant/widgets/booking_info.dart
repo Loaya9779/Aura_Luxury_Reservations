@@ -15,10 +15,22 @@ class BookingInfo extends StatelessWidget {
       children: [
         Text(
           name,
-          style: AppStyle.headlineLarge.copyWith(color: AppColors.primary),
+          style: AppStyle.headlineMedium.copyWith(color: AppColors.primary),
         ),
         const SizedBox(height: 10),
-        Text(description, style: AppStyle.bodyMedium),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: AppColors.background,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            description,
+            style: AppStyle.bodyMedium,
+            softWrap: true,
+          ),
+        ),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class RestaurantShimmer extends StatelessWidget {
@@ -25,7 +26,7 @@ class RestaurantShimmer extends StatelessWidget {
               children: [
                 // الصورة
                 Container(
-                  height: 200,
+                  height: 200.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -37,8 +38,8 @@ class RestaurantShimmer extends StatelessWidget {
 
                 // اسم المطعم
                 Container(
-                  height: 20,
-                  width: 180,
+                  height: 20.h,
+                  width: 180.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(6),
@@ -49,7 +50,7 @@ class RestaurantShimmer extends StatelessWidget {
 
                 // الزرار
                 Container(
-                  height: 48,
+                  height: 48.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,

@@ -7,6 +7,7 @@ import 'package:aura_luxury_reservations/features/view_resturant/widget/custom_b
 import 'package:aura_luxury_reservations/features/view_resturant/widget/restaurant_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResturantList extends StatelessWidget {
   const ResturantList({super.key});
@@ -36,7 +37,7 @@ class ResturantList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 200,
+                      height: 200.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         image: DecorationImage(

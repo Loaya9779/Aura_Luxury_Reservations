@@ -11,18 +11,18 @@ class BookingHeader extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: RichText(
         text: TextSpan(
-          text: 'Booking\n',
-          style: AppStyle.headlineLarge,
+          text: 'All Resturants\n',
+          style: AppStyle.headlineSmall,
           children: [
             TextSpan(
               text: 'Manage your exclusive culinary experiences.\n',
-              style: AppStyle.bodyMedium.copyWith(color: AppColors.textSecondary),
+              style: AppStyle.bodySmall.copyWith(color: AppColors.textSecondary),
             ),
             WidgetSpan(
               child: Center(
                 child: Text(
                   'UPCOMING RESERVATIONS',
-                  style: AppStyle.bodyLarge.copyWith(color: AppColors.primary),
+                  style: AppStyle.bodySmall.copyWith(color: AppColors.primary),
                 ),
               ),
             ),
