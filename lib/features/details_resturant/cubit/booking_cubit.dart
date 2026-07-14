@@ -37,6 +37,7 @@ class BookingCubit extends Cubit<BookingState> {
       );
 
       emit(BookingCompleted());
+      resetBooking();
     } catch (e) {
       emit(BookingError(error: e.toString()));
     }
