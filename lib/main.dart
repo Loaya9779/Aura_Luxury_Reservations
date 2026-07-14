@@ -15,17 +15,29 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  await Hive.openBox('appBox');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
   // await firebaseDataSource.addResturants();
-  runApp(DevicePreview(builder: (_) => const MainApp(), enabled: true));
+  bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
+
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (_) => MainApp(isLoggedIn: isLoggedIn),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final bool isLoggedIn;
+  const MainApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class MainApp extends StatelessWidget {
         splitScreenMode: true,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/splash', //'/splash',
+          initialRoute: isLoggedIn ? '/home' : '/splash',
           routes: {
             '/splash': (_) => const SplashScreen(),
             '/onboarding': (_) => const OnboardingScreen(),
