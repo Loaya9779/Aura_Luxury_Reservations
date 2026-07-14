@@ -10,7 +10,6 @@ import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cu
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,10 +27,7 @@ void main() async {
   bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
 
   runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (_) => MainApp(isLoggedIn: isLoggedIn),
-    ),
+    MainApp(isLoggedIn: isLoggedIn),
   );
 }
 

@@ -1,5 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppBarWidget extends StatelessWidget {
@@ -28,7 +30,10 @@ class AppBarWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/login');
+              context.read<AuthCubit>().logout();
+            },
             icon: const Icon(
               Icons.notifications_none_rounded,
               color: AppColors.primary,

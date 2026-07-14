@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+
     return BlocListener<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is AuthErrorState) {
@@ -48,11 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(const SnackBar(content: Text('Login Success')));
+
           Navigator.pushNamed(context, '/home');
         }
       },
       child: Scaffold(
         appBar: CustomAppBar(isCenter: true),
+        // resizeToAvoidBottomInset: true,
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -61,93 +64,115 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Text(
-                        'Welcome Back',
-                        style: AppStyle.headlineLarge.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.all(24),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
                     ),
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              'Welcome Back',
+                              style: AppStyle.headlineLarge.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Return to your curated culinary\nexperiences.',
+                            textAlign: TextAlign.center,
+                            style: AppStyle.bodyMedium.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
+                          const SizedBox(height: 32),
 
-                    const SizedBox(height: 8),
+                          CustomTextField(
+                            hintText: 'concierge@lumiere.com',
+                            labelText: 'Email',
+                            validator: Validation.validateEmail,
+                            controller: _emailController,
+                          ),
 
-                    Text(
-                      'Return to your curated culinary\nexperiences.',
-                      textAlign: TextAlign.center,
-                      style: AppStyle.bodyMedium.copyWith(
-                        color: Colors.white70,
-                      ),
-                    ),
+                          const SizedBox(height: 16),
 
-                    const SizedBox(height: 32),
+                          BlocBuilder<AuthCubit, AuthStates>(
+                            builder: (context, state) {
+                              final cubit = context.read<AuthCubit>();
 
-                    CustomTextField(
-                      hintText: 'concierge@lumiere.com',
-                      labelText: 'email',
-                      validator: Validation.validateEmail,
-                      controller: _emailController,
-                    ),
-                    const SizedBox(height: 16),
-                    BlocBuilder<AuthCubit, AuthStates>(
-                      builder: (context, state) {
-                        final myCubit = context.read<AuthCubit>();
-
-                        return CustomTextField(
-                          hintText: '••••••••',
-                          labelText: 'password',
-                          obscureText: myCubit.isPasswordHidden,
-                          suffixIcon: myCubit.isPasswordHidden
-                              ? IconButton(
-                                  onPressed: myCubit.togglePasswordVisibility,
-                                  icon: const Icon(Icons.visibility_off),
-                                )
-                              : IconButton(
-                                  onPressed: myCubit.togglePasswordVisibility,
-                                  icon: const Icon(Icons.visibility),
+                              return CustomTextField(
+                                hintText: '••••••••',
+                                labelText: 'Password',
+                                controller: _passwordController,
+                                validator: Validation.validatePassword,
+                                obscureText: cubit.isPasswordHidden,
+                                suffixIcon: IconButton(
+                                  onPressed: cubit.togglePasswordVisibility,
+                                  icon: Icon(
+                                    cubit.isPasswordHidden
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
                                 ),
-                          validator: Validation.validatePassword,
-                          controller: _passwordController,
-                        );
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: CustomTextButtom(
-                        title: 'forget password?',
-                        onpressed: () =>
-                            Navigator.pushNamed(context, '/forget-password'),
+                              );
+                            },
+                          ),
+
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: CustomTextButtom(
+                              title: 'Forget password?',
+                              onpressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/forget-password',
+                                );
+                              },
+                            ),
+                          ),
+
+                          const SizedBox(height: 32),
+
+                          CustomButtom(
+                            title: 'Sign In',
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthCubit>().login(
+                                  _emailController.text.trim(),
+                                  _passwordController.text,
+                                );
+                              }
+                            },
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          CustomTextButtom(
+                            title: "Don't have an account? Sign Up",
+                            onpressed: () {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                '/signup',
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 32),
-                    CustomButtom(
-                      title: 'Sign In',
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          context.read<AuthCubit>().login(
-                            _emailController.text.trim(),
-                            _passwordController.text,
-                          );
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 8),
-                    CustomTextButtom(
-                      title: 'don\'t have an account? sign up',
-                      onpressed: () =>
-                          Navigator.pushReplacementNamed(context, '/signup'),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ),
         ),
