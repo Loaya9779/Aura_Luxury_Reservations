@@ -1,5 +1,6 @@
 import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/model/booking_model.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,22 +14,26 @@ class BookingCubit extends Cubit<BookingState> {
   TimeOfDay? selectedTime;
   int guests = 1;
 
-  Future<void> bookRestaurant({
+  Future<void> confirmBooking({
     required ResturantModel restaurant,
-    required DateTime date,
-    required TimeOfDay time,
-    required int guests,
     required BuildContext context,
   }) async {
+    if (selectedDate == null || selectedTime == null) {
+      emit(BookingError(error: "Choose date and time"));
+      return;
+    }
+
     emit(BookingLoading());
 
     try {
       await firebaseDataSource.bookRestaurant(
-        restaurant: restaurant,
-        date: date,
-        time: time,
-        guests: guests,
         context: context,
+        booking: BookingModel(
+          restaurant: restaurant,
+          date: selectedDate!,
+          time: selectedTime!,
+          guestCount: guests,
+        ),
       );
 
       emit(BookingCompleted());

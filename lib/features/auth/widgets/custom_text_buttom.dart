@@ -1,3 +1,5 @@
+import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButtom extends StatelessWidget {
@@ -13,7 +15,10 @@ class CustomTextButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onpressed,
-      child: Text(title, style: const TextStyle(color: Colors.red)),
+      child: Text(
+        title,
+        style: AppStyle.labelMedium.copyWith(color: AppColors.secondary),
+      ),
     );
   }
 }

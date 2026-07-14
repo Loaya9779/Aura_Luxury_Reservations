@@ -11,9 +11,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: AppBar(
+        automaticallyImplyLeading: true,
         backgroundColor: AppColors.background,
         elevation: 0,
-        title: Text('LUMIÈRE', style: AppStyle.labelSmall),
+        title: Text('LUMIÈRE', style: AppStyle.labelLarge),
         centerTitle: isCenter,
         leading: icon,
       ),

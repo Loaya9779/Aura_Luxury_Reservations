@@ -106,12 +106,8 @@ class BookingDetailsScreen extends StatelessWidget {
                     );
                     return;
                   }
-
-                  cubit.bookRestaurant(
+                  cubit.confirmBooking(
                     restaurant: restaurant,
-                    date: cubit.selectedDate!,
-                    time: cubit.selectedTime!,
-                    guests: cubit.guests,
                     context: context,
                   );
                 },

@@ -1,93 +1,92 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
 class AppStyle {
-  // ================= Headline =================
+  /// Headline (Hanken Grotesk)
 
-  static final TextStyle headlineExtraLarge = GoogleFonts.hankenGrotesk(
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w700,
-    letterSpacing: 0.2,
+  static TextStyle headlineExtraLarge = GoogleFonts.hankenGrotesk(
+    fontSize: 40,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.6,
     height: 1.2,
     color: AppColors.textPrimary,
   );
 
-  static final TextStyle headlineLarge = GoogleFonts.hankenGrotesk(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w600,
-    letterSpacing: 0.2,
+  static TextStyle headlineLarge = GoogleFonts.hankenGrotesk(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.6,
     height: 1.2,
     color: AppColors.textPrimary,
   );
 
-  static final TextStyle headlineMedium = GoogleFonts.hankenGrotesk(
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w600,
-    letterSpacing: 0.1,
+  static TextStyle headlineMedium = GoogleFonts.hankenGrotesk(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.3,
     height: 1.3,
     color: AppColors.textPrimary,
   );
 
-  static final TextStyle headlineSmall = GoogleFonts.hankenGrotesk(
-    fontSize: 6.sp,
+  static TextStyle headlineSmall = GoogleFonts.hankenGrotesk(
+    fontSize: 20,
     fontWeight: FontWeight.w500,
     height: 1.3,
     color: AppColors.textPrimary,
   );
 
-  // ================= Body =================
+  /// Body (Inter)
 
-  static final TextStyle bodyLarge = GoogleFonts.inter(
-    fontSize: 11.sp,
+  static TextStyle bodyLarge = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 1.6,
+    color: AppColors.textSecondary,
+  );
+
+  static TextStyle bodyMedium = GoogleFonts.inter(
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.5,
     color: AppColors.textSecondary,
   );
 
-  static final TextStyle bodyMedium = GoogleFonts.inter(
-    fontSize: 8.sp,
+  static TextStyle bodySmall = GoogleFonts.inter(
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     height: 1.5,
     color: AppColors.textSecondary,
   );
 
-  static final TextStyle bodySmall = GoogleFonts.inter(
-    fontSize: 5.sp,
-    fontWeight: FontWeight.w400,
-    height: 1.5,
-    color: AppColors.textSecondary,
-  );
+  /// Label (Inter)
 
-  // ================= Label =================
-
-  static final TextStyle labelExtraLarge = GoogleFonts.inter(
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w700,
-    letterSpacing: 0.3,
+  static TextStyle labelExtraLarge = GoogleFonts.inter(
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1,
     color: AppColors.primary,
   );
 
-  static final TextStyle labelLarge = GoogleFonts.inter(
-    fontSize: 14.sp,
+  static TextStyle labelLarge = GoogleFonts.inter(
+    fontSize: 30,
     fontWeight: FontWeight.w600,
-    letterSpacing: 0.2,
+    letterSpacing: 1,
     color: AppColors.primary,
   );
 
-  static final TextStyle labelMedium = GoogleFonts.inter(
-    fontSize: 12.sp,
+  static TextStyle labelMedium = GoogleFonts.inter(
+    fontSize: 12,
     fontWeight: FontWeight.w600,
-    letterSpacing: 0.2,
+    letterSpacing: 1.5,
     color: AppColors.primary,
   );
 
-  static final TextStyle labelSmall = GoogleFonts.inter(
-    fontSize: 5.sp,
+  static TextStyle labelSmall = GoogleFonts.inter(
+    fontSize: 10,
     fontWeight: FontWeight.w600,
-    letterSpacing: 0.1,
+    letterSpacing: 2,
     color: AppColors.primary,
   );
 }

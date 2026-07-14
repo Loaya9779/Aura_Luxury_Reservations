@@ -1,4 +1,5 @@
 import 'package:aura_luxury_reservations/features/auth/model/user_model.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/model/booking_model.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -134,9 +135,7 @@ culinary innovation.''',
         print(doc.data());
       }
 
-      return snapshot.docs
-          .map((doc) => ResturantModel.fromFirestore(doc))
-          .toList();
+      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
     } catch (e) {
       print("firebase: $e");
       return [];
@@ -165,10 +164,7 @@ culinary innovation.''',
   // }
 
   Future<void> bookRestaurant({
-    required ResturantModel restaurant,
-    required DateTime date,
-    required TimeOfDay time,
-    required int guests,
+    required BookingModel booking,
     required BuildContext context,
   }) async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
@@ -176,13 +172,13 @@ culinary innovation.''',
     await _firestore.collection("users").doc(uid).set({
       "bookings": FieldValue.arrayUnion([
         {
-          "restaurantId": restaurant.id,
-          "restaurantName": restaurant.name,
-          "image": restaurant.image,
-          "description": restaurant.description,
-          "date": DateFormat("dd/MM/yyyy").format(date),
-          "time": time.format(context),
-          "guestCount": guests,
+          "restaurantId": booking.restaurant.id,
+          "restaurantName": booking.restaurant.name,
+          "image": booking.restaurant.image,
+          "description": booking.restaurant.description,
+          "date": DateFormat("dd/MM/yyyy").format(booking.date),
+          "time": booking.time.format(context),
+          "guestCount": booking.guestCount,
           "createdAt": Timestamp.now(),
         },
       ]),
