@@ -1,6 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
-import 'package:aura_luxury_reservations/features/view_resturant/widget/booking_header.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/widget/resturants_header.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/widget/resturant_list.dart';
 import 'package:flutter/material.dart';
 

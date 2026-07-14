@@ -9,12 +9,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColors.background,
-      elevation: 0,
-      title: Text('LUMIÈRE', style: AppStyle.labelLarge),
-      centerTitle: isCenter,
-      leading: icon,
+    return SafeArea(
+      child: AppBar(
+        automaticallyImplyLeading: true,
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        title: Text('LUMIÈRE', style: AppStyle.labelLarge),
+        centerTitle: isCenter,
+        leading: icon,
+      ),
     );
   }
 

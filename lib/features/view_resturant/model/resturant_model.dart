@@ -6,9 +6,6 @@ class ResturantModel {
   final String name;
   final String image;
   final String description;
-  final String? guestCount;
-  final String? date;
-  final String? time;
   final String?location;
   final String? rating;
 
@@ -17,9 +14,6 @@ class ResturantModel {
     required this.name,
     required this.image,
     required this.description,
-    this.date,
-    this.time,
-    this.guestCount,
     this.location, this.rating
   });
 
@@ -27,14 +21,11 @@ class ResturantModel {
     'name': name,
     'image': image,
     'description': description,
-    'guestCount': guestCount,
-    'date': date,
-    'time': time,
     'location': location,
     'rating': rating
   };
 
- factory ResturantModel.fromFirestore(DocumentSnapshot doc) {
+ factory ResturantModel.fromJson(DocumentSnapshot doc) {
   final json = doc.data() as Map<String, dynamic>;
 
   return ResturantModel(
@@ -42,9 +33,6 @@ class ResturantModel {
     name: json['name'] as String,
     image: json['image'],
     description: json['description'] as String,
-    guestCount: json['guestCount'] as String?,
-    date: json['date'] as String?,
-    time: json['time'] as String?,
     location: json['location'] as String?,
     rating: json['rating'] as String?
   );

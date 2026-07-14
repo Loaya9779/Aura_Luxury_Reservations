@@ -135,16 +135,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.read<AuthCubit>().login(
                             _emailController.text.trim(),
                             _passwordController.text,
-                          
                           );
-
                         }
                       },
                     ),
                     const SizedBox(height: 8),
                     CustomTextButtom(
                       title: 'don\'t have an account? sign up',
-                      onpressed: () => Navigator.pushNamed(context, '/signup'),
+                      onpressed: () =>
+                          Navigator.pushReplacementNamed(context, '/signup'),
                     ),
                   ],
                 ),

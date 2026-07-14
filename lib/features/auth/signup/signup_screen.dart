@@ -154,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(height: 8),
                     CustomTextButtom(
                       title: 'do you have an account? sign In',
-                      onpressed: () => Navigator.pushNamed(context, '/login'),
+                      onpressed: () => Navigator.pushReplacementNamed(context, '/login'),
                     ),
                   ],
                 ),

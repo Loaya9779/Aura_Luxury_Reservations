@@ -1,4 +1,5 @@
 import 'package:aura_luxury_reservations/features/auth/model/user_model.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/model/booking_model.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -76,40 +77,29 @@ class FirebaseDataSource {
         name: "Mizu Zen",
         image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
         description:
-            '''Mizu Zen offers a refined Japanese dining experience where traditional flavors meet
-modern presentation. Enjoy premium sushi, fresh sashimi, and signature dishes crafted
-with the finest ingredients in a peaceful,
-elegant atmosphere.''',
-        location: '',
-        rating: '',
+            "Mizu Zen offers a refined Japanese dining experience where traditional flavors meet modern presentation. Enjoy premium sushi, fresh sashimi, and signature dishes crafted with the finest ingredients in a peaceful, elegant atmosphere.",
+        location: "Le Marais, Paris, France",
+        rating: "4.8",
       ),
+
       ResturantModel(
         id: "",
         name: "L'Eclat d'Or",
         image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
-        description: '''L'Eclat d'Or delivers an exceptional fine
-dining experience inspired by classic
-French cuisine. Every plate is prepared
-with seasonal ingredients, artistic
-presentation, and impeccable service
-to create unforgettable moments.''',
-        location: '',
-        rating: '',
+        description:
+            "L'Eclat d'Or delivers an exceptional fine dining experience inspired by classic French cuisine. Every plate is prepared with seasonal ingredients, artistic presentation, and impeccable service to create unforgettable moments.",
+        location: "Champs-Élysées, Paris, France",
+        rating: "4.7",
       ),
+
       ResturantModel(
         id: "",
         name: "L'Oiseau Bleu Interior",
         image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
-        description: '''L'Oiseau Bleu redefines contemporary
-French gastronomy under the vision of
-Chef Marcelle Vasseur. Every dish is a
-silent symphony of seasonal ingredients
-sourced from exclusive coastal estates.
-The atmosphere is curated for those
-who value discretion as much as
-culinary innovation.''',
-        location: '',
-        rating: '',
+        description:
+            "L'Oiseau Bleu redefines contemporary French gastronomy under the vision of Chef Marcelle Vasseur. Every dish is a silent symphony of seasonal ingredients sourced from exclusive coastal estates. The atmosphere is curated for those who value discretion as much as culinary innovation.",
+        location: "Le Vieux-Port, Marseille, France",
+        rating: "4.9",
       ),
     ];
 
@@ -134,9 +124,7 @@ culinary innovation.''',
         print(doc.data());
       }
 
-      return snapshot.docs
-          .map((doc) => ResturantModel.fromFirestore(doc))
-          .toList();
+      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
     } catch (e) {
       print("firebase: $e");
       return [];
@@ -165,10 +153,7 @@ culinary innovation.''',
   // }
 
   Future<void> bookRestaurant({
-    required ResturantModel restaurant,
-    required DateTime date,
-    required TimeOfDay time,
-    required int guests,
+    required BookingModel booking,
     required BuildContext context,
   }) async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
@@ -176,13 +161,13 @@ culinary innovation.''',
     await _firestore.collection("users").doc(uid).set({
       "bookings": FieldValue.arrayUnion([
         {
-          "restaurantId": restaurant.id,
-          "restaurantName": restaurant.name,
-          "image": restaurant.image,
-          "description": restaurant.description,
-          "date": DateFormat("dd/MM/yyyy").format(date),
-          "time": time.format(context),
-          "guestCount": guests,
+          "restaurantId": booking.restaurant.id,
+          "restaurantName": booking.restaurant.name,
+          "image": booking.restaurant.image,
+          "description": booking.restaurant.description,
+          "date": DateFormat("dd/MM/yyyy").format(booking.date),
+          "time": booking.time.format(context),
+          "guestCount": booking.guestCount,
           "createdAt": Timestamp.now(),
         },
       ]),
