@@ -626,6 +626,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.11"
+  ticketcher:
+    dependency: "direct main"
+    description:
+      name: ticketcher
+      sha256: f432a687e9e520aba322c6009f7e1d05cdcd395efdb89e8b7b02c48b581ce987
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   typed_data:
     dependency: transitive
     description:
