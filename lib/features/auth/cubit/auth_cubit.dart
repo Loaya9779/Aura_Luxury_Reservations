@@ -1,3 +1,4 @@
+import 'package:aura_luxury_reservations/core/data_source/hive_cache.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/auth/model/user_model.dart';
 import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitialState());
   FirebaseDataSource firebaseDataSource = FirebaseDataSource();
-
+  HiveCache hiveCache = HiveCache();
   bool isPasswordHidden = true;
 
   void togglePasswordVisibility() {
@@ -34,6 +35,8 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       UserModel? userModel = await firebaseDataSource.signIn(email, password);
       if (userModel != null) {
+        await hiveCache.setLoggedIn(true);
+
         emit(LogInSuccessState(userModel: userModel));
       }
     } catch (e) {
@@ -49,5 +52,10 @@ class AuthCubit extends Cubit<AuthStates> {
     } catch (e) {
       emit(AuthErrorState(error: e.toString()));
     }
+  }
+
+  void logout() async {
+    await hiveCache.logout();
+    emit(LogOutSuccessState());
   }
 }

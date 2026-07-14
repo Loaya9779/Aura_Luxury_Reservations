@@ -13,6 +13,8 @@ class LogInSuccessState extends AuthStates {
   LogInSuccessState({required this.userModel});
 }
 
+class LogOutSuccessState extends AuthStates {}
+
 class AuthErrorState extends AuthStates {
   final String error;
   AuthErrorState({required this.error});
