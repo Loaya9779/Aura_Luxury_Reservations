@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? icon;
   final bool isCenter;
-  final VoidCallback? onTap;
+
   const CustomAppBar({
     super.key,
     this.icon,
     required this.isCenter,
-   this.onTap,
   });
 
   @override
