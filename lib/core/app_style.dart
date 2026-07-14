@@ -36,6 +36,12 @@ class AppStyle {
     height: 1.3,
     color: AppColors.textPrimary,
   );
+  static TextStyle headlineExtraSmall = GoogleFonts.hankenGrotesk(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+    color: AppColors.textPrimary,
+  );
 
   /// Body (Inter)
 
@@ -60,6 +66,13 @@ class AppStyle {
     color: AppColors.textSecondary,
   );
 
+  static TextStyle bodyExtraSmall = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+    color: AppColors.textSecondary,
+  );
+
   /// Label (Inter)
 
   static TextStyle labelExtraLarge = GoogleFonts.inter(
@@ -73,6 +86,13 @@ class AppStyle {
     fontSize: 30,
     fontWeight: FontWeight.w600,
     letterSpacing: 1,
+    color: AppColors.primary,
+  );
+
+  static TextStyle labelRegular = GoogleFonts.inter(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1.5,
     color: AppColors.primary,
   );
 

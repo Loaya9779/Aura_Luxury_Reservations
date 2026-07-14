@@ -71,8 +71,8 @@ class FirebaseDataSource {
   }
 
   Future<void> addResturants() async {
-    final List<ResturantModel> resturants = [
-      ResturantModel(
+    final List<RestaurantModel> resturants = [
+      RestaurantModel(
         id: "",
         name: "Mizu Zen",
         image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
@@ -114,7 +114,7 @@ class FirebaseDataSource {
     }
   }
 
-  Future<List<ResturantModel>> getResturants() async {
+  Future<List<RestaurantModel>> getResturants() async {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 

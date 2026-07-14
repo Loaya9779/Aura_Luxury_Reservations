@@ -7,9 +7,10 @@ class ResturantInitial extends ResturantState {}
 class ResturantLoading extends ResturantState {}
 
 class ResturantSuccess extends ResturantState {
-  final List<ResturantModel> resturants;
+  final List<RestaurantModel> resturants;
   ResturantSuccess({required this.resturants});
 }
+
 class ResturantCompleted extends ResturantState {}
 
 class ResturantError extends ResturantState {
@@ -17,4 +18,4 @@ class ResturantError extends ResturantState {
   ResturantError({required this.error});
 }
 
-class ResturantUpdated extends ResturantState{}
+class ResturantUpdated extends ResturantState {}

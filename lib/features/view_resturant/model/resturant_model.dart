@@ -1,7 +1,6 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ResturantModel {
+class RestaurantModel {
   final String? id;
   final String name;
   final String image;
@@ -9,7 +8,7 @@ class ResturantModel {
   final String?location;
   final String? rating;
 
-  ResturantModel({
+  RestaurantModel({
     this.id,
     required this.name,
     required this.image,
@@ -22,7 +21,7 @@ class ResturantModel {
     'image': image,
     'description': description,
     'location': location,
-    'rating': rating
+    'rating': rating,
   };
 
  factory ResturantModel.fromJson(DocumentSnapshot doc) {

@@ -1,5 +1,5 @@
 import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
-import 'package:aura_luxury_reservations/features/view_resturant/cubit/satates.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/cubit/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResturantCubit extends Cubit<ResturantState> {
