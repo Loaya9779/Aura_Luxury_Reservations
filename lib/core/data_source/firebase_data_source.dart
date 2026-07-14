@@ -40,6 +40,7 @@ class FirebaseDataSource {
       print("Firestore Success");
     } catch (e) {
       print(e);
+      rethrow;
     }
   }
 
@@ -58,7 +59,7 @@ class FirebaseDataSource {
       return UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
     } catch (e) {
       print("firebase: $e");
-      return null;
+      rethrow;
     }
   }
 
