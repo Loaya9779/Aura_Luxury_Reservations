@@ -2,6 +2,7 @@ import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
+import 'package:aura_luxury_reservations/features/confirmation/screen/confirmation_screen.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/home/cubit/home_cubit.dart';
 import 'package:aura_luxury_reservations/features/my_bookings/cubit/my_bookings_cubit.dart';
@@ -65,7 +66,7 @@ class MainApp extends StatelessWidget {
             '/forget-password': (_) => const ForgetPasswordScreen(),
             '/home': (_) => const HomeScreen(),
             '/resturants': (_) => const ResturantsScreen(),
-            '/my-bookings': (_) => const MyBookingsScreen(),
+            '/confirmation': (_) => const ConfirmationScreen(),
           },
         ),
       ),
