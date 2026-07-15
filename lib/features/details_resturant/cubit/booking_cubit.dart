@@ -32,7 +32,7 @@ class BookingCubit extends Cubit<BookingState> {
           restaurant: restaurant,
           date: selectedDate!,
           time: selectedTime!,
-          guestCount: guests,
+          guestCount: guests, createdAt: DateTime.now(),
         ),
       );
 
