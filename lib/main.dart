@@ -23,8 +23,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseDataSource firebaseDataSource = FirebaseDataSource();
-  await firebaseDataSource.addResturants();
+  // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
+  // await firebaseDataSource.addResturants();
   runApp(DevicePreview(builder: (_) => const MainApp(), enabled: true));
 }
 
@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => ResturantCubit()..getResturants()),
         BlocProvider(create: (_) => OnboardingCubit()),
         BlocProvider(create: (_) => HomeCubit()..getRestaurants()),
-        BlocProvider(create: (_) => MyBookingsCubit()),
+        BlocProvider(create: (_) => MyBookingsCubit()..getUserBookings()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 852),
@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
         splitScreenMode: true,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/my-bookings', //'/splash',
+          initialRoute: '/splash', //'/splash',
           routes: {
             '/splash': (_) => const SplashScreen(),
             '/onboarding': (_) => const OnboardingScreen(),

@@ -73,7 +73,7 @@ class FirebaseDataSource {
   Future<void> addResturants() async {
     final List<ResturantModel> resturants = [
       ResturantModel(
-        id: "",
+        // id: "",
         name: "Mizu Zen",
         image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
         description:
@@ -83,7 +83,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        id: "",
+        // id: "",
         name: "L'Eclat d'Or",
         image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
         description:
@@ -93,7 +93,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        id: "",
+        // id: "",
         name: "L'Oiseau Bleu Interior",
         image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
         description:
@@ -115,16 +115,18 @@ class FirebaseDataSource {
   }
 
   Future<List<ResturantModel>> getResturants() async {
+    final List<ResturantModel> resturants = [];
+
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
-      print("Documents Count: ${snapshot.docs.length}");
+      // print("Documents Count: ${snapshot.docs.length}");
 
       for (var doc in snapshot.docs) {
-        print(doc.data());
+        resturants.add(ResturantModel.fromJson(doc.data()));
       }
 
-      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
+      return resturants;
     } catch (e) {
       print("firebase: $e");
       return [];
@@ -160,16 +162,17 @@ class FirebaseDataSource {
 
     await _firestore.collection("users").doc(uid).set({
       "bookings": FieldValue.arrayUnion([
-        {
-          "restaurantId": booking.restaurant.id,
-          "restaurantName": booking.restaurant.name,
-          "image": booking.restaurant.image,
-          "description": booking.restaurant.description,
-          "date": DateFormat("dd/MM/yyyy").format(booking.date),
-          "time": booking.time.format(context),
-          "guestCount": booking.guestCount,
-          "createdAt": Timestamp.now(),
-        },
+        booking.toJson(),
+        // {
+        //   "restaurantId": booking.restaurant.id,
+        //   "restaurantName": booking.restaurant.name,
+        //   "image": booking.restaurant.image,
+        //   "description": booking.restaurant.description,
+        //   "date": DateFormat("dd/MM/yyyy").format(booking.date),
+        //   "time": booking.time.format(context),
+        //   "guestCount": booking.guestCount,
+        //   "createdAt": Timestamp.now(),
+        // },
       ]),
     }, SetOptions(merge: true));
   }
@@ -183,11 +186,11 @@ class FirebaseDataSource {
           .doc(uid)
           .get();
       final userData = snapshot.data() as Map<String, dynamic>;
-      for (var i in userData["bookings"]) {
+      final bookings = userData["bookings"] ?? [];
+      for (var i in bookings) {
         userBookings.add(BookingModel.fromJson(i));
       }
-      // remove this line after testing
-      print(userBookings[0].restaurant.name);
+
       return userBookings;
     } catch (e) {
       print(e.toString());
