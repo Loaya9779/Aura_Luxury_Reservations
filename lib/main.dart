@@ -4,7 +4,9 @@ import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/signup/signup_screen.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/home/cubit/home_cubit.dart';
-import 'package:aura_luxury_reservations/features/view_resturant/cubit/resturant_cubit.dart';
+import 'package:aura_luxury_reservations/features/my_bookings/cubit/my_bookings_cubit.dart';
+import 'package:aura_luxury_reservations/features/my_bookings/screen/my_bookings_screen.dart';
+import 'package:aura_luxury_reservations/features/view_resturant/cubit/restaurant_cubit.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/screen/resturants_screen.dart';
 import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cubit.dart';
@@ -45,6 +47,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => ResturantCubit()..getResturants()),
         BlocProvider(create: (_) => OnboardingCubit()),
         BlocProvider(create: (_) => HomeCubit()..getRestaurants()),
+        BlocProvider(create: (_) => MyBookingsCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 852),
@@ -62,6 +65,7 @@ class MainApp extends StatelessWidget {
             '/forget-password': (_) => const ForgetPasswordScreen(),
             '/home': (_) => const HomeScreen(),
             '/resturants': (_) => const ResturantsScreen(),
+            '/my-bookings': (_) => const MyBookingsScreen(),
           },
         ),
       ),

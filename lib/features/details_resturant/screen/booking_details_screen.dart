@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
-  final RestaurantModel restaurant;
+  final ResturantModel restaurant;
 
   const BookingDetailsScreen({super.key, required this.restaurant});
 
