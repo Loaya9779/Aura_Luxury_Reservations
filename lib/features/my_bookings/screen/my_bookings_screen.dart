@@ -10,8 +10,19 @@ import 'package:aura_luxury_reservations/features/my_bookings/widgets/my_booking
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyBookingsScreen extends StatelessWidget {
+class MyBookingsScreen extends StatefulWidget {
   const MyBookingsScreen({super.key});
+
+  @override
+  State<MyBookingsScreen> createState() => _MyBookingsScreenState();
+}
+
+class _MyBookingsScreenState extends State<MyBookingsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MyBookingsCubit>().getUserBookings();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,34 +31,36 @@ class MyBookingsScreen extends StatelessWidget {
       appBar: CustomAppBar(isCenter: true),
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 25, vertical: 50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MyBookingHeader(),
-            BookHistoryRow(),
-            BlocBuilder<MyBookingsCubit, MyBookingsState>(
-              builder: (context, state) {
-                if (state is MybookingsLoadingState) {
-                  return MyBookingsShimmer();
-                } else if (state is MybookingsSuccessState) {
-                  return Expanded(
-                    child: ListView.builder(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MyBookingHeader(),
+              BookHistoryRow(),
+              BlocBuilder<MyBookingsCubit, MyBookingsState>(
+                builder: (context, state) {
+                  if (state is MybookingsLoadingState) {
+                    return MyBookingsShimmer();
+                  } else if (state is MybookingsSuccessState) {
+                    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: state.mybookings.length,
                       itemBuilder: (context, index) {
                         return BookingHistoryContainer(
                           myBooking: state.mybookings[index],
                         );
                       },
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text("Network Error", style: AppStyle.bodyLarge),
-                  );
-                }
-              },
-            ),
-          ],
+                    );
+                  } else {
+                    return Center(
+                      child: Text("Network Error", style: AppStyle.bodyLarge),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

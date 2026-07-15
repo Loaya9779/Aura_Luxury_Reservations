@@ -13,6 +13,7 @@ class BookingHistoryContainer extends StatelessWidget {
     final double width = MediaQuery.sizeOf(context).width;
     return Container(
       padding: EdgeInsets.all(20),
+      margin: EdgeInsets.only(bottom: 10),
       height: height * .25,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: AppColors.surfaceHighest),

@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => ResturantCubit()..getResturants()),
         BlocProvider(create: (_) => OnboardingCubit()),
         BlocProvider(create: (_) => HomeCubit()..getRestaurants()),
-        BlocProvider(create: (_) => MyBookingsCubit()..getUserBookings()),
+        BlocProvider(create: (_) => MyBookingsCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 852),
