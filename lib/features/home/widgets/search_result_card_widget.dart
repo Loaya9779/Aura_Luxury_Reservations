@@ -4,18 +4,13 @@ import 'package:flutter/material.dart';
 class SearchResultCardWidget extends StatelessWidget {
   final ResturantModel restaurant;
 
-  const SearchResultCardWidget({
-    super.key,
-    required this.restaurant,
-  });
+  const SearchResultCardWidget({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: NetworkImage(restaurant.image),
-        ),
+        leading: CircleAvatar(backgroundImage: NetworkImage(restaurant.image)),
         title: Text(restaurant.name),
         subtitle: Text(restaurant.description),
       ),
