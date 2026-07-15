@@ -7,7 +7,7 @@ class ResturantInitial extends ResturantState {}
 class ResturantLoading extends ResturantState {}
 
 class ResturantSuccess extends ResturantState {
-  final List<RestaurantModel> resturants;
+  final List<ResturantModel> resturants;
   ResturantSuccess({required this.resturants});
 }
 
