@@ -31,8 +31,8 @@ class ResturantModel {
       name: json['name'] as String,
       image: json['image'],
       description: json['description'] as String,
-      location: json['location'] as String?,
-      rating: json['rating'] as String?,
+      location: json['location'] as String,
+      rating: json['rating'] as String,
     );
   }
 }

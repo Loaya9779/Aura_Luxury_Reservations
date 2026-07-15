@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultsWidget extends StatelessWidget {
-  const SearchResultsWidget({
-    super.key,
-    required this.focusNode,
-  });
+  const SearchResultsWidget({super.key, required this.focusNode});
 
   final FocusNode focusNode;
   @override
@@ -27,9 +24,7 @@ class SearchResultsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: AppColors.surfaceContainer,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxHeight: 300,
-          ),
+          constraints: const BoxConstraints(maxHeight: 300),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: results.length,
@@ -51,7 +46,7 @@ class SearchResultsWidget extends StatelessWidget {
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: Text(
-                  restaurant.location ?? "",
+                  restaurant.location,
                   style: const TextStyle(color: Colors.grey),
                 ),
                 onTap: () {
