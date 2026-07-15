@@ -71,8 +71,8 @@ class FirebaseDataSource {
   }
 
   Future<void> addResturants() async {
-    final List<RestaurantModel> resturants = [
-      RestaurantModel(
+    final List<ResturantModel> resturants = [
+      ResturantModel(
         id: "",
         name: "Mizu Zen",
         image: "https://cdn.corenexis.com/f/bHQag6zIKUt.png",
@@ -114,7 +114,7 @@ class FirebaseDataSource {
     }
   }
 
-  Future<List<RestaurantModel>> getResturants() async {
+  Future<List<ResturantModel>> getResturants() async {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
@@ -172,5 +172,26 @@ class FirebaseDataSource {
         },
       ]),
     }, SetOptions(merge: true));
+  }
+
+  Future<List<BookingModel>> getUserBookings() async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final List<BookingModel> userBookings = [];
+    try {
+      DocumentSnapshot snapshot = await _firestore
+          .collection("users")
+          .doc(uid)
+          .get();
+      final userData = snapshot.data() as Map<String, dynamic>;
+      for (var i in userData["bookings"]) {
+        userBookings.add(BookingModel.fromJson(i));
+      }
+      // remove this line after testing
+      print(userBookings[0].restaurant.name);
+      return userBookings;
+    } catch (e) {
+      print(e.toString());
+      rethrow;
+    }
   }
 }
