@@ -162,14 +162,7 @@ class FirebaseDataSource {
     await _firestore.collection("users").doc(uid).set({
       "bookings": FieldValue.arrayUnion([
         {
-          "restaurantId": booking.restaurant.id,
-          "restaurantName": booking.restaurant.name,
-          "image": booking.restaurant.image,
-          "description": booking.restaurant.description,
-          "date": DateFormat("dd/MM/yyyy").format(booking.date),
-          "time": booking.time.format(context),
-          "guestCount": booking.guestCount,
-          "createdAt": Timestamp.now(),
+          booking.toJson(),
         },
       ]),
     }, SetOptions(merge: true));

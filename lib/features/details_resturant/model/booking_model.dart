@@ -6,23 +6,23 @@ class BookingModel {
   final DateTime date;
   final TimeOfDay time;
   final int guestCount;
+  final DateTime createdAt;
 
   BookingModel({
     required this.restaurant,
     required this.date,
     required this.time,
     required this.guestCount,
+    required this.createdAt,
   });
 
   Map<String, dynamic> toJson() {
     return {
       "restaurant": restaurant.toJson(),
       "date": date.toIso8601String(),
-      "time": {
-        "hour": time.hour,
-        "minute": time.minute,
-      },
+      "time": {"hour": time.hour, "minute": time.minute},
       "guestCount": guestCount,
+      "createdAt": createdAt,
     };
   }
 
@@ -35,6 +35,7 @@ class BookingModel {
         minute: json["time"]["minute"],
       ),
       guestCount: json["guestCount"],
+      createdAt: DateTime.parse(json["createdAt"]),
     );
   }
 }
