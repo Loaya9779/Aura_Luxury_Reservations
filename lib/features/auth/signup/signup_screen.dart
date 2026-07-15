@@ -65,100 +65,121 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
           child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Text(
-                        'Create Account',
-                        style: AppStyle.headlineLarge.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.all(24),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
                     ),
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              'Create Account',
+                              style: AppStyle.headlineLarge.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
 
-                    const SizedBox(height: 8),
+                          const SizedBox(height: 8),
 
-                    Text(
-                      'Join Aura and start enjoying exclusive luxury\ndining experiences.',
-                      textAlign: TextAlign.center,
-                      style: AppStyle.bodyMedium.copyWith(
-                        color: Colors.white70,
-                      ),
-                    ),
+                          Text(
+                            'Join Aura and start enjoying exclusive luxury\ndining experiences.',
+                            textAlign: TextAlign.center,
+                            style: AppStyle.bodyMedium.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
 
-                    const SizedBox(height: 32),
+                          const SizedBox(height: 32),
 
-                    const SizedBox(height: 16),
-                    CustomTextField(
-                      hintText: 'John Doe',
-                      labelText: 'Name',
-                      validator: Validation.validateName,
-                      controller: _nameController,
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextField(
-                      hintText: '01*********',
-                      labelText: 'Phone Number',
-                      validator: Validation.validatePhone,
-                      controller: _phoneNumberController,
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextField(
-                      hintText: 'concierge@lumiere.com',
-                      labelText: 'email',
-                      validator: Validation.validateEmail,
-                      controller: _emailController,
-                    ),
-                    const SizedBox(height: 16),
-                    BlocBuilder<AuthCubit, AuthStates>(
-                      builder: (context, state) {
-                        final myCubit = context.read<AuthCubit>();
-                        return CustomTextField(
-                          hintText: '••••••••',
-                          labelText: 'password',
-                          obscureText: myCubit.isPasswordHidden,
-                          suffixIcon: myCubit.isPasswordHidden
-                              ? IconButton(
-                                  icon: const Icon(Icons.visibility_off),
-                                  onPressed: myCubit.togglePasswordVisibility,
-                                )
-                              : IconButton(
-                                  icon: const Icon(Icons.visibility),
-                                  onPressed: myCubit.togglePasswordVisibility,
+                          CustomTextField(
+                            hintText: 'John Doe',
+                            labelText: 'Name',
+                            validator: Validation.validateName,
+                            controller: _nameController,
+                          ),
+
+                          const SizedBox(height: 16),
+
+                          CustomTextField(
+                            hintText: '01*********',
+                            labelText: 'Phone Number',
+                            validator: Validation.validatePhone,
+                            controller: _phoneNumberController,
+                          ),
+
+                          const SizedBox(height: 16),
+
+                          CustomTextField(
+                            hintText: 'concierge@lumiere.com',
+                            labelText: 'Email',
+                            validator: Validation.validateEmail,
+                            controller: _emailController,
+                          ),
+
+                          const SizedBox(height: 16),
+
+                          BlocBuilder<AuthCubit, AuthStates>(
+                            builder: (context, state) {
+                              final cubit = context.read<AuthCubit>();
+
+                              return CustomTextField(
+                                hintText: '••••••••',
+                                labelText: 'Password',
+                                controller: _passwordController,
+                                validator: Validation.validatePassword,
+                                obscureText: cubit.isPasswordHidden,
+                                suffixIcon: IconButton(
+                                  onPressed: cubit.togglePasswordVisibility,
+                                  icon: Icon(
+                                    cubit.isPasswordHidden
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
                                 ),
-                          validator: Validation.validatePassword,
-                          controller: _passwordController,
-                        );
-                      },
+                              );
+                            },
+                          ),
+
+                          const SizedBox(height: 32),
+
+                          CustomButtom(
+                            title: 'Sign Up',
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthCubit>().signUp(
+                                  _nameController.text.trim(),
+                                  _emailController.text.trim(),
+                                  _passwordController.text,
+                                  _phoneNumberController.text.trim(),
+                                );
+                              }
+                            },
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          CustomTextButtom(
+                            title: 'Do you have an account? Sign In',
+                            onpressed: () {
+                              Navigator.pushReplacementNamed(context, '/login');
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 32),
-                    CustomButtom(
-                      title: 'Sign Up',
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          context.read<AuthCubit>().signUp(
-                            _nameController.text.trim(),
-                            _emailController.text.trim(),
-                            _passwordController.text,
-                            _phoneNumberController.text.trim(),
-                          );
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 8),
-                    CustomTextButtom(
-                      title: 'do you have an account? sign In',
-                      onpressed: () => Navigator.pushReplacementNamed(context, '/login'),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ),
         ),

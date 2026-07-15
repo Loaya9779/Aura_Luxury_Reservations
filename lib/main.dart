@@ -1,4 +1,3 @@
-import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
@@ -14,22 +13,30 @@ import 'package:aura_luxury_reservations/features/onBoarding/cubit/onboarding_cu
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  await Hive.openBox('appBox');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
   // await firebaseDataSource.addResturants();
-  runApp(DevicePreview(builder: (_) => const MainApp(), enabled: true));
+  bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
+
+  runApp(
+    MainApp(isLoggedIn: isLoggedIn),
+  );
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final bool isLoggedIn;
+  const MainApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,7 @@ class MainApp extends StatelessWidget {
         splitScreenMode: true,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/splash', //'/splash',
+          initialRoute: isLoggedIn ? '/home' : '/splash',
           routes: {
             '/splash': (_) => const SplashScreen(),
             '/onboarding': (_) => const OnboardingScreen(),
