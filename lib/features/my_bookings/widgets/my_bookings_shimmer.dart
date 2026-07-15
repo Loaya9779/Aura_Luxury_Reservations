@@ -25,39 +25,67 @@ class MyBookingsShimmer extends StatelessWidget {
               baseColor: AppColors.gold,
               highlightColor: Colors.grey.shade100,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // الصورة
+                  // image
                   Container(
-                    height: 200.h,
-                    width: width * 0.1,
+                    height: height * 0.12,
+                    width: width * 0.25,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
 
-                  const SizedBox(height: 12),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      //Name
+                      Container(
+                        height: height * 0.08,
+                        width: width * 0.20,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                      Container(
+                        height: height * 0.08,
+                        width: width * 0.20,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                      Container(
+                        height: height * 0.08,
+                        width: width * 0.20,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                      Container(
+                        height: height * 0.08,
+                        width: width * 0.20,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                    ],
+                  ),
 
-                  // اسم المطعم
+                  const SizedBox(height: 10),
+
+                  // Rebook Button
                   Container(
-                    height: 20.h,
-                    width: 180.w,
+                    height: height * 0.08,
+                    width: width * 0.20,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // الزرار
-                  Container(
-                    height: 48.h,
-                    width: width * 0.1,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],
