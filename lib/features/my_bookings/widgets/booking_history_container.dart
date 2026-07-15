@@ -1,9 +1,11 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/model/booking_model.dart';
 import 'package:flutter/material.dart';
 
 class BookingHistoryContainer extends StatelessWidget {
-  const BookingHistoryContainer({super.key});
+  final BookingModel myBooking;
+  const BookingHistoryContainer({super.key, required this.myBooking});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class BookingHistoryContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(10),
-            child: Image.asset(
-              "assets/images/splash.png",
+            child: Image.network(
+              myBooking.restaurant.image,
               height: height * 0.12,
               width: width * 0.25,
               fit: BoxFit.fill,
@@ -33,10 +35,28 @@ class BookingHistoryContainer extends StatelessWidget {
               constraints: BoxConstraints(maxWidth: width * 0.3),
               child: Column(
                 children: [
-                  Text("Restaurant Name", style: AppStyle.headlineExtraSmall),
                   Text(
-                    "Date Time and Guests",
-                    style: AppStyle.bodyExtraSmall.copyWith(
+                    myBooking.restaurant.name,
+                    style: AppStyle.headlineExtraSmall,
+                  ),
+                  SizedBox(height: 25),
+                  Text(
+                    "Date: ${myBooking.date.day}/${myBooking.date.month}/${myBooking.date.year}",
+                    style: AppStyle.bodySmall.copyWith(
+                      color: AppColors.textSecondary.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  SizedBox(height: 25),
+                  Text(
+                    "Time: ${myBooking.time.hour}:${myBooking.time.minute}",
+                    style: AppStyle.bodySmall.copyWith(
+                      color: AppColors.textSecondary.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  SizedBox(height: 25),
+                  Text(
+                    "${myBooking.guestCount} Guests",
+                    style: AppStyle.bodySmall.copyWith(
                       color: AppColors.textSecondary.withValues(alpha: 0.5),
                     ),
                   ),
