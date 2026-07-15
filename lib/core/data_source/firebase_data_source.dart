@@ -4,7 +4,6 @@ import 'package:aura_luxury_reservations/features/view_resturant/model/resturant
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class FirebaseDataSource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -131,28 +130,6 @@ class FirebaseDataSource {
       return [];
     }
   }
-
-  // Future<void> bookRestaurant({
-  //   required ResturantModel restaurant,
-  //   required DateTime date,
-  //   required TimeOfDay time,
-  //   required int guests,
-  //   required BuildContext context,
-  // }) async {
-  //   final uid = FirebaseAuth.instance.currentUser!.uid;
-
-  //   await _firestore.collection("users").doc(uid).collection("bookings").add({
-  //     "restaurantId": restaurant.id,
-  //     "restaurantName": restaurant.name,
-  //     "image": restaurant.image,
-  //     "description": restaurant.description,
-  //     "date": DateFormat("dd/MM/yyyy").format(date),
-  //     "time": time.format(context),
-  //     "guestCount": guests,
-  //     "createdAt": FieldValue.serverTimestamp(),
-  //   });
-  // }
-
   Future<void> bookRestaurant({
     required BookingModel booking,
     required BuildContext context,
@@ -161,9 +138,7 @@ class FirebaseDataSource {
 
     await _firestore.collection("users").doc(uid).set({
       "bookings": FieldValue.arrayUnion([
-        {
-          booking.toJson(),
-        },
+        {booking.toJson()},
       ]),
     }, SetOptions(merge: true));
   }
