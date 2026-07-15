@@ -84,7 +84,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        // id: "",
+        //id: "",
         name: "L'Eclat d'Or",
         image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
         description:
@@ -94,7 +94,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        // id: "",
+        //id: "",
         name: "L'Oiseau Bleu Interior",
         image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
         description:
@@ -123,11 +123,11 @@ class FirebaseDataSource {
 
       // print("Documents Count: ${snapshot.docs.length}");
 
-      for (var doc in snapshot.docs) {
-        resturants.add(ResturantModel.fromJson(doc.data()));
-      }
+      // for (var doc in snapshot.docs) {
+      //   resturants.add(ResturantModel.fromJson(doc.data()));
+      // }
 
-      return resturants;
+      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
     } catch (e) {
       print("firebase: $e");
       return [];
