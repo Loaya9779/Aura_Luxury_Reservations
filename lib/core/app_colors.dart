@@ -42,4 +42,6 @@ class AppColors {
 
   static const Color glass = Color(0x0DFFFFFF); // 5%
   static const Color glassBorder = Color(0x1AFFFFFF); // 10%
+
+  static const Color red = Color(0xffFFB4AB);
 }
