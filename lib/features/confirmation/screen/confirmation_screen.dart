@@ -1,6 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/features/confirmation/widget/confirmation_body_widget.dart';
-import 'package:aura_luxury_reservations/features/home/widgets/app_bar_widget.dart';
+import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmationScreen extends StatelessWidget {

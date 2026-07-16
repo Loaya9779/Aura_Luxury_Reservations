@@ -1,6 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
-import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
+import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/profile_booking_history_listview.dart';
@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(isCenter: true),
+      appBar: AppBarWidget(isHome: false),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: EdgeInsets.all(25),

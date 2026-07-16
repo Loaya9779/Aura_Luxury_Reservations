@@ -1,5 +1,5 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
-import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
+import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:aura_luxury_reservations/features/confirmation/screen/confirmation_screen.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/satates.dart';
@@ -71,7 +71,7 @@ class BookingDetailsScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: AppColors.background,
-        appBar: CustomAppBar(isCenter: true),
+        appBar: AppBarWidget(isHome: false),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
