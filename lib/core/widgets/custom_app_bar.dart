@@ -3,12 +3,11 @@ import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget? icon;
+
   final bool isCenter;
 
   const CustomAppBar({
     super.key,
-    this.icon,
     required this.isCenter,
   });
 
@@ -16,13 +15,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: AppBar(
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
         elevation: 0,
         title: Text('LUMIÈRE', style: AppStyle.labelLarge),
         centerTitle: isCenter,
-        leading: icon,
       ),
     );
   }

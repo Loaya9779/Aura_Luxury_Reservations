@@ -1,6 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookingInfo extends StatelessWidget {
   final String name;
@@ -17,7 +18,7 @@ class BookingInfo extends StatelessWidget {
           name,
           style: AppStyle.headlineMedium.copyWith(color: AppColors.primary),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(8),
