@@ -1,5 +1,5 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
-import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
+import 'package:aura_luxury_reservations/features/Navigation/screen/navigation_screen.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,8 +34,9 @@ class _SplashScreenState extends State<SplashScreen>
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) =>
-                isLoggedIn ? const HomeScreen() : const OnboardingScreen(),
+            builder: (_) => isLoggedIn
+                ? const NavigationScreen()
+                : const OnboardingScreen(),
           ),
         );
       }

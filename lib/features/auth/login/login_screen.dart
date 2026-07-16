@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             context,
           ).showSnackBar(const SnackBar(content: Text('Login Success')));
 
-          Navigator.pushNamed(context, '/home');
+          Navigator.pushNamed(context, '/navigation');
         }
       },
       child: Scaffold(
