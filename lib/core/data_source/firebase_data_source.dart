@@ -88,7 +88,7 @@ class FirebaseDataSource {
         description:
             "Mizu Zen offers a refined Japanese dining experience where traditional flavors meet modern presentation. Enjoy premium sushi, fresh sashimi, and signature dishes crafted with the finest ingredients in a peaceful, elegant atmosphere.",
         category: "American",
-        location: "Le Marais, Paris, France",
+        location: "Paris, France",
         rating: "4.8",
       ),
 
@@ -99,7 +99,7 @@ class FirebaseDataSource {
         description:
             "L'Eclat d'Or delivers an exceptional fine dining experience inspired by classic French cuisine. Every plate is prepared with seasonal ingredients, artistic presentation, and impeccable service to create unforgettable moments.",
         category: "Japanese",
-        location: "Champs-Élysées, Paris, France",
+        location: "Lyon, France",
         rating: "4.7",
       ),
 
@@ -110,7 +110,7 @@ class FirebaseDataSource {
         description:
             "L'Oiseau Bleu redefines contemporary French gastronomy under the vision of Chef Marcelle Vasseur. Every dish is a silent symphony of seasonal ingredients sourced from exclusive coastal estates. The atmosphere is curated for those who value discretion as much as culinary innovation.",
         category: "Modern French",
-        location: "Le Vieux-Port, Marseille, France",
+        location: "Marseille, France",
         rating: "4.9",
       ),
     ];
@@ -132,8 +132,6 @@ class FirebaseDataSource {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
-      // print("Documents Count: ${snapshot.docs.length}");
-
       for (var doc in snapshot.docs) {
         resturants.add(ResturantModel.fromJson(doc.data()));
       }
@@ -145,27 +143,6 @@ class FirebaseDataSource {
     }
   }
 
-  // Future<void> bookRestaurant({
-  //   required ResturantModel restaurant,
-  //   required DateTime date,
-  //   required TimeOfDay time,
-  //   required int guests,
-  //   required BuildContext context,
-  // }) async {
-  //   final uid = FirebaseAuth.instance.currentUser!.uid;
-
-  //   await _firestore.collection("users").doc(uid).collection("bookings").add({
-  //     "restaurantId": restaurant.id,
-  //     "restaurantName": restaurant.name,
-  //     "image": restaurant.image,
-  //     "description": restaurant.description,
-  //     "date": DateFormat("dd/MM/yyyy").format(date),
-  //     "time": time.format(context),
-  //     "guestCount": guests,
-  //     "createdAt": FieldValue.serverTimestamp(),
-  //   });
-  // }
-
   Future<void> bookRestaurant({
     required BookingModel booking,
     required BuildContext context,
@@ -173,19 +150,7 @@ class FirebaseDataSource {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     await _firestore.collection("users").doc(uid).set({
-      "bookings": FieldValue.arrayUnion([
-        booking.toJson(),
-        // {
-        //   "restaurantId": booking.restaurant.id,
-        //   "restaurantName": booking.restaurant.name,
-        //   "image": booking.restaurant.image,
-        //   "description": booking.restaurant.description,
-        //   "date": DateFormat("dd/MM/yyyy").format(booking.date),
-        //   "time": booking.time.format(context),
-        //   "guestCount": booking.guestCount,
-        //   "createdAt": Timestamp.now(),
-        // },
-      ]),
+      "bookings": FieldValue.arrayUnion([booking.toJson()]),
     }, SetOptions(merge: true));
   }
 
