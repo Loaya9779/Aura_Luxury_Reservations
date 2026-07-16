@@ -30,9 +30,7 @@ void main() async {
   // await firebaseDataSource.addResturants();
   bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
 
-  runApp(
-    MainApp(isLoggedIn: isLoggedIn),
-  );
+  runApp(MainApp(isLoggedIn: isLoggedIn));
 }
 
 class MainApp extends StatelessWidget {
@@ -66,7 +64,21 @@ class MainApp extends StatelessWidget {
             '/forget-password': (_) => const ForgetPasswordScreen(),
             '/home': (_) => const HomeScreen(),
             '/resturants': (_) => const ResturantsScreen(),
-            '/confirmation': (_) => const ConfirmationScreen(),
+          },
+          onGenerateRoute: (settings) {
+            if (settings.name == '/confirmation-booking') {
+              final args = settings.arguments as Map<String, dynamic>;
+
+              return MaterialPageRoute(
+                builder: (context) => ConfirmationScreen(
+                  restaurantName: args['restaurantName'],
+                  date: args['date'],
+                  time: args['time'],
+                  guestsCount: args['guestsCount'],
+                ),
+              );
+            }
+            return null;
           },
         ),
       ),
