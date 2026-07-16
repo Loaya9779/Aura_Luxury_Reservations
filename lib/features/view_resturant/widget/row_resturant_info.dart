@@ -22,16 +22,18 @@ class RowResturantInfo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(name, style: AppStyle.labelLarge),
-            Spacer(),
-            Icon(
-              Icons.star,
-              color: AppColors.gold,
+            Text(
+              name,
+              style: AppStyle.labelLarge.copyWith(color: AppColors.white),
             ),
+            Spacer(),
+            Icon(Icons.star, color: AppColors.gold),
             Text(rating, style: AppStyle.labelMedium),
           ],
         ),
+        const SizedBox(height: 7),
         Text(location, style: AppStyle.bodySmall),
+        const SizedBox(height: 7),
       ],
     );
   }
