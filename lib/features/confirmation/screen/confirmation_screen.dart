@@ -8,7 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:ticketcher/ticketcher.dart';
 
 class ConfirmationScreen extends StatelessWidget {
-  const ConfirmationScreen({super.key});
+  final String restaurantName;
+  final String date;
+  final String time;
+  final int guestsCount;
+
+  const ConfirmationScreen({
+    super.key,
+    required this.restaurantName,
+    required this.date,
+    required this.time,
+    required this.guestsCount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +71,7 @@ class ConfirmationScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Text(
-                        "Your evening at Lumière is secured. We look forward to providing you with an unforgettable culinary journey.",
+                        "Your evening at $restaurantName is secured. We look forward to providing you with an unforgettable culinary journey.",
                         style: AppStyle.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
@@ -132,13 +143,12 @@ class ConfirmationScreen extends StatelessWidget {
                                                         fontSize: 14,
                                                       ),
                                                 ),
-                                                const SizedBox(height: 4),
+                                                const SizedBox(height: 8),
                                                 Text(
-                                                  "Lumière Grand Salon",
-                                                  style: AppStyle.headlineMedium
+                                                  restaurantName,
+                                                  style: AppStyle.headlineLarge
                                                       .copyWith(
                                                         color: AppColors.white,
-                                                        fontSize: 20,
                                                       ),
                                                 ),
                                               ],
@@ -146,17 +156,19 @@ class ConfirmationScreen extends StatelessWidget {
                                             Column(
                                               children: [
                                                 Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Expanded(
                                                       child: TicketInfoWidget(
                                                         title: "Date",
-                                                        info: "Friday, Oct 24",
+                                                        info: date,
                                                       ),
                                                     ),
                                                     Expanded(
                                                       child: TicketInfoWidget(
                                                         title: "Time",
-                                                        info: "20:30",
+                                                        info: time,
                                                       ),
                                                     ),
                                                   ],
@@ -173,7 +185,9 @@ class ConfirmationScreen extends StatelessWidget {
                                                     Expanded(
                                                       child: TicketInfoWidget(
                                                         title: "Guests",
-                                                        info: "02 Persons",
+                                                        info: guestsCount < 10
+                                                            ? "0$guestsCount Persons"
+                                                            : "$guestsCount Persons",
                                                       ),
                                                     ),
                                                   ],
@@ -227,7 +241,12 @@ class ConfirmationScreen extends StatelessWidget {
                     const SizedBox(height: 32),
                     SizedBox(
                       width: ticketWidth,
-                      child: CustomButtomWidget(title: 'Ok'),
+                      child: CustomButtomWidget(
+                        title: 'Ok',
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, "/home");
+                        },
+                      ),
                     ),
                     const SizedBox(height: 24),
                   ],
