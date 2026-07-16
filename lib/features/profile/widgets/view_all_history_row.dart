@@ -12,7 +12,7 @@ class ViewAllHistoryRow extends StatelessWidget {
         Text("Reservation History", style: AppStyle.headlineMedium),
         TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, "/my-bookings");
+            Navigator.pushReplacementNamed(context, "/my-bookings");
           },
           style: TextButton.styleFrom(padding: EdgeInsets.zero),
           child: Text("VIEW ALL", style: AppStyle.labelSmall),
