@@ -4,7 +4,6 @@ import 'package:aura_luxury_reservations/features/view_resturant/model/resturant
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class FirebaseDataSource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
