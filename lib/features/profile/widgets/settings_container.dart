@@ -1,4 +1,5 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/features/Navigation/cubit/navigation_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class SettingsContainer extends StatelessWidget {
             isSignout: true,
             onTap: () {
               context.read<AuthCubit>().logout();
+              context.read<NavigationCubit>().changeIndex(0);
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 "/login",
