@@ -1,3 +1,5 @@
+import 'package:aura_luxury_reservations/features/Navigation/cubit/navigation_cubit.dart';
+import 'package:aura_luxury_reservations/features/Navigation/screen/navigation_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
@@ -47,6 +49,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => OnboardingCubit()),
         BlocProvider(create: (_) => HomeCubit()..getRestaurants()),
         BlocProvider(create: (_) => MyBookingsCubit()),
+        BlocProvider(create: (_) => NavigationCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 852),
@@ -54,6 +57,7 @@ class MainApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
+          theme: ThemeData(splashColor: Colors.transparent),
           debugShowCheckedModeBanner: false,
           initialRoute: isLoggedIn ? '/home' : '/splash',
           routes: {
@@ -62,6 +66,7 @@ class MainApp extends StatelessWidget {
             '/signup': (_) => const SignupScreen(),
             '/login': (_) => const LoginScreen(),
             '/forget-password': (_) => const ForgetPasswordScreen(),
+            '/navigation': (_) => const NavigationScreen(),
             '/home': (_) => const HomeScreen(),
             '/resturants': (_) => const ResturantsScreen(),
             '/my-bookings': (_) => const MyBookingsScreen(),
