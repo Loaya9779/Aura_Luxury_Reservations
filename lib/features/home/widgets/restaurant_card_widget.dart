@@ -96,7 +96,7 @@ class RestaurantCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      resturant.name,
+                      resturant.category,
                       style: TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: width * 0.04,
