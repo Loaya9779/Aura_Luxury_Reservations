@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class BookingModel {
   final ResturantModel restaurant;
+  final String status;
   final DateTime date;
   final TimeOfDay time;
   final int guestCount;
@@ -12,16 +13,15 @@ class BookingModel {
     required this.date,
     required this.time,
     required this.guestCount,
+    required this.status,
   });
 
   Map<String, dynamic> toJson() {
     return {
       "restaurant": restaurant.toJson(),
+      "status": status,
       "date": date.toIso8601String(),
-      "time": {
-        "hour": time.hour,
-        "minute": time.minute,
-      },
+      "time": {"hour": time.hour, "minute": time.minute},
       "guestCount": guestCount,
     };
   }
@@ -29,6 +29,7 @@ class BookingModel {
   factory BookingModel.fromJson(Map<String, dynamic> json) {
     return BookingModel(
       restaurant: ResturantModel.fromJson(json["restaurant"]),
+      status: json["status"],
       date: DateTime.parse(json["date"]),
       time: TimeOfDay(
         hour: json["time"]["hour"],

@@ -1,4 +1,6 @@
 import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
+import 'package:aura_luxury_reservations/features/Navigation/cubit/navigation_cubit.dart';
+import 'package:aura_luxury_reservations/features/Navigation/screen/navigation_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
@@ -35,7 +37,7 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key,});
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +49,15 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => OnboardingCubit()),
         BlocProvider(create: (_) => HomeCubit()..getRestaurants()),
         BlocProvider(create: (_) => MyBookingsCubit()),
+        BlocProvider(create: (_) => NavigationCubit()),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(393, 852),
+        designSize: const Size(390, 882),
         useInheritedMediaQuery: true,
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
+          theme: ThemeData(splashColor: Colors.transparent),
           debugShowCheckedModeBanner: false,
           initialRoute: '/splash',
           routes: {
@@ -62,6 +66,7 @@ class MainApp extends StatelessWidget {
             '/signup': (_) => const SignupScreen(),
             '/login': (_) => const LoginScreen(),
             '/forget-password': (_) => const ForgetPasswordScreen(),
+            '/navigation': (_) => const NavigationScreen(),
             '/home': (_) => const HomeScreen(),
             '/resturants': (_) => ResturantsScreen(),
             '/my-bookings': (_) => const MyBookingsScreen(),

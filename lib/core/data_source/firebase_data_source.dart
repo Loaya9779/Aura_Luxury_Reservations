@@ -144,27 +144,6 @@ class FirebaseDataSource {
     }
   }
 
-  // Future<void> bookRestaurant({
-  //   required ResturantModel restaurant,
-  //   required DateTime date,
-  //   required TimeOfDay time,
-  //   required int guests,
-  //   required BuildContext context,
-  // }) async {
-  //   final uid = FirebaseAuth.instance.currentUser!.uid;
-
-  //   await _firestore.collection("users").doc(uid).collection("bookings").add({
-  //     "restaurantId": restaurant.id,
-  //     "restaurantName": restaurant.name,
-  //     "image": restaurant.image,
-  //     "description": restaurant.description,
-  //     "date": DateFormat("dd/MM/yyyy").format(date),
-  //     "time": time.format(context),
-  //     "guestCount": guests,
-  //     "createdAt": FieldValue.serverTimestamp(),
-  //   });
-  // }
-
   Future<void> bookRestaurant({
     required BookingModel booking,
     required BuildContext context,
@@ -172,19 +151,7 @@ class FirebaseDataSource {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     await _firestore.collection("users").doc(uid).set({
-      "bookings": FieldValue.arrayUnion([
-        booking.toJson(),
-        // {
-        //   "restaurantId": booking.restaurant.id,
-        //   "restaurantName": booking.restaurant.name,
-        //   "image": booking.restaurant.image,
-        //   "description": booking.restaurant.description,
-        //   "date": DateFormat("dd/MM/yyyy").format(booking.date),
-        //   "time": booking.time.format(context),
-        //   "guestCount": booking.guestCount,
-        //   "createdAt": Timestamp.now(),
-        // },
-      ]),
+      "bookings": FieldValue.arrayUnion([booking.toJson()]),
     }, SetOptions(merge: true));
   }
 
