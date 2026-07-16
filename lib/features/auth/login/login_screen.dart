@@ -36,78 +36,77 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            SizedBox(
+            Container(
               width: double.infinity,
               height: double.infinity,
-              child: Positioned.fill(
-                child: Image.asset(
-                  'assets/images/auth_background.png',
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/auth_background.png'),
                   fit: BoxFit.cover,
                 ),
-              ),
-            ),
-
-            SafeArea(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    SafeArea(
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Center(
-                              child: Text(
-                                'LUMIÈRE',
-                                style: AppStyle.headlineExtraLarge.copyWith(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.bold,
+              ),),
+              SafeArea(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      SafeArea(
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.all(24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: Text(
+                                  'LUMIÈRE',
+                                  style: AppStyle.headlineExtraLarge.copyWith(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 50),
-                            Center(
-                              child: Text(
-                                'Welcome Back',
-                                style: AppStyle.headlineLarge.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
+                              SizedBox(height: 50),
+                              Center(
+                                child: Text(
+                                  'Welcome Back',
+                                  style: AppStyle.headlineLarge.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              'Return to your curated culinary\nexperiences.',
-                              textAlign: TextAlign.center,
-                              style: AppStyle.bodyMedium.copyWith(
-                                color: Colors.white70,
+                              const SizedBox(height: 8),
+                              Text(
+                                'Return to your curated culinary\nexperiences.',
+                                textAlign: TextAlign.center,
+                                style: AppStyle.bodyMedium.copyWith(
+                                  color: Colors.white70,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 32),
+                              const SizedBox(height: 32),
 
-                            LoginWidget(),
-                            const SizedBox(height: 8),
+                              LoginWidget(),
+                              const SizedBox(height: 8),
 
-                            CustomTextButtom(
-                              title: "Don't have an account? Sign Up",
-                              onpressed: () {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  '/signup',
-                                );
-                              },
-                            ),
-                          ],
+                              CustomTextButtom(
+                                title: "Don't have an account? Sign Up",
+                                onpressed: () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    '/signup',
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
+            
           ],
         ),
       ),
