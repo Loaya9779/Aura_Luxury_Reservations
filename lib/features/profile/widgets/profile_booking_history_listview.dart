@@ -1,3 +1,4 @@
+import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/features/my_bookings/cubit/my_bookings_cubit.dart';
 import 'package:aura_luxury_reservations/features/my_bookings/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/profile_booking_history_container.dart';
@@ -26,7 +27,12 @@ class ProfileBookingHistoryListview extends StatelessWidget {
             },
           );
         }
-        return Center(child: Text("You don't have any bookings yet"));
+        return Center(
+          child: Text(
+            "You don't have any bookings yet",
+            style: AppStyle.bodyMedium,
+          ),
+        );
       },
     );
   }

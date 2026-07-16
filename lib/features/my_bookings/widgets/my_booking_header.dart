@@ -14,7 +14,7 @@ class MyBookingHeader extends StatelessWidget {
           TextSpan(text: "My Bookings\n", style: AppStyle.headlineExtraLarge),
           TextSpan(
             text: "Manage your exclusive culinary experiences.\n",
-            style: AppStyle.bodyMedium,
+            style: AppStyle.bodySmall,
           ),
         ],
       ),
