@@ -13,7 +13,6 @@ class BookingHistoryContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20.w),
       margin: EdgeInsets.only(bottom: 10.w),
-      height: 180.h,
       decoration: BoxDecoration(
         border: Border.all(width: 1.w, color: AppColors.surfaceHighest),
         borderRadius: BorderRadius.circular(15.r),
@@ -22,7 +21,7 @@ class BookingHistoryContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(10),
+            borderRadius: BorderRadiusGeometry.circular(10.r),
             child: Image.network(
               myBooking.restaurant.image,
               height: 80.h,
@@ -34,27 +33,26 @@ class BookingHistoryContainer extends StatelessWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 110.w),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     myBooking.restaurant.name,
                     style: AppStyle.headlineExtraSmall,
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "Date: ${myBooking.date.day}/${myBooking.date.month}/${myBooking.date.year}",
                     style: AppStyle.bodySmall.copyWith(
                       color: AppColors.textSecondary.withValues(alpha: 0.5),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "Time: ${myBooking.time.hour}:${myBooking.time.minute}",
                     style: AppStyle.bodySmall.copyWith(
                       color: AppColors.textSecondary.withValues(alpha: 0.5),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "${myBooking.guestCount} Guests",
                     style: AppStyle.bodySmall.copyWith(
