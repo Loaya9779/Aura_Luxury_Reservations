@@ -1,6 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GuestCounter extends StatelessWidget {
   final int guests;
@@ -19,11 +20,8 @@ class GuestCounter extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-         Text(
-          "Guests",
-          style: AppStyle.bodyLarge,
-        ),
-        const SizedBox(height: 10),
+        Text("Guests", style: AppStyle.bodyLarge),
+        SizedBox(height: 10.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

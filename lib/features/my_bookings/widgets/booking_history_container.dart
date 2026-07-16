@@ -40,21 +40,21 @@ class BookingHistoryContainer extends StatelessWidget {
                     myBooking.restaurant.name,
                     style: AppStyle.headlineExtraSmall,
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "Date: ${myBooking.date.day}/${myBooking.date.month}/${myBooking.date.year}",
                     style: AppStyle.bodySmall.copyWith(
                       color: AppColors.textSecondary.withValues(alpha: 0.5),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "Time: ${myBooking.time.hour}:${myBooking.time.minute}",
                     style: AppStyle.bodySmall.copyWith(
                       color: AppColors.textSecondary.withValues(alpha: 0.5),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 8.h),
                   Text(
                     "${myBooking.guestCount} Guests",
                     style: AppStyle.bodySmall.copyWith(
