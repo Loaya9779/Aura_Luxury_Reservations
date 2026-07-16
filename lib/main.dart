@@ -35,7 +35,7 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key,});
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => NavigationCubit()),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(393, 852),
+        designSize: const Size(390, 882),
         useInheritedMediaQuery: true,
         minTextAdapt: true,
         splitScreenMode: true,
