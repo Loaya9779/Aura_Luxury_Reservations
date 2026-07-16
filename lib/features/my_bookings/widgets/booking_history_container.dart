@@ -65,13 +65,13 @@ class BookingHistoryContainer extends StatelessWidget {
               ),
             ),
           ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-              foregroundColor: AppColors.gold,
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(width: 1, color: AppColors.surfaceHighest),
             ),
-            child: Row(children: [Text("Rebook"), Icon(Icons.arrow_right_alt)]),
+            child: Text(myBooking.status, style: AppStyle.bodyExtraSmall),
           ),
         ],
       ),

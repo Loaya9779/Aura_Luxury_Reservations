@@ -1,9 +1,13 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
+import 'package:aura_luxury_reservations/features/details_resturant/model/booking_model.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBookingHistoryContainer extends StatelessWidget {
-  const ProfileBookingHistoryContainer({super.key});
+  final BookingModel myBooking;
+
+  const ProfileBookingHistoryContainer({super.key, required this.myBooking});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class ProfileBookingHistoryContainer extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(8),
             child: Image.network(
-              "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
+              myBooking.restaurant.image,
               height: 60,
               width: 60,
               fit: BoxFit.fill,
@@ -30,16 +34,22 @@ class ProfileBookingHistoryContainer extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("L'Ambroisie", style: AppStyle.headlineExtraSmall),
-              Text("Paris, France", style: AppStyle.bodySmall),
-              Text("Oct 14, 2023", style: AppStyle.bodySmall),
+              Text(
+                myBooking.restaurant.name,
+                style: AppStyle.headlineExtraSmall,
+              ),
+              Text(myBooking.restaurant.location, style: AppStyle.bodySmall),
+              Text(
+                DateFormat("MMM d, yyyy").format(myBooking.date),
+                style: AppStyle.bodySmall,
+              ),
             ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text("Status", style: AppStyle.bodySmall),
-              Text("COMPLETED", style: AppStyle.labelMedium),
+              Text(myBooking.status, style: AppStyle.labelMedium),
             ],
           ),
         ],
