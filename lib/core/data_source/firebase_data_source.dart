@@ -92,7 +92,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        // id: "",
+        //id: "",
         name: "L'Eclat d'Or",
         image: "https://cdn.corenexis.com/f/l1lD1ip39ER.png",
         description:
@@ -103,7 +103,7 @@ class FirebaseDataSource {
       ),
 
       ResturantModel(
-        // id: "",
+        //id: "",
         name: "L'Oiseau Bleu Interior",
         image: "https://cdn.corenexis.com/f/1hIVojZysZo.png",
         description:
@@ -131,11 +131,13 @@ class FirebaseDataSource {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
-      for (var doc in snapshot.docs) {
-        resturants.add(ResturantModel.fromJson(doc.data()));
-      }
+      // print("Documents Count: ${snapshot.docs.length}");
 
-      return resturants;
+      // for (var doc in snapshot.docs) {
+      //   resturants.add(ResturantModel.fromJson(doc.data()));
+      // }
+
+      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
     } catch (e) {
       print("firebase: $e");
       return [];

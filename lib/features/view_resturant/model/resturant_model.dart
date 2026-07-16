@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ResturantModel {
   // final String? id;
   final String name;
@@ -26,7 +28,9 @@ class ResturantModel {
     'rating': rating,
   };
 
-  factory ResturantModel.fromJson(Map<String, dynamic> json) {
+  factory ResturantModel.fromJson(DocumentSnapshot doc) {
+    final json = doc.data() as Map<String, dynamic>;
+
     return ResturantModel(
       // id: doc.id,
       name: json['name'] as String,

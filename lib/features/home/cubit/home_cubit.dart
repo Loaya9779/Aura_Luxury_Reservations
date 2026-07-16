@@ -25,7 +25,6 @@ class HomeCubit extends Cubit<HomeStates> {
       emit(HomeError(errorMessage: e.toString()));
     }
   }
-
   void searchRestaurants(String query) {
     if (query.trim().isEmpty) {
       searchResults = [];
