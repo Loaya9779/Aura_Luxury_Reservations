@@ -131,8 +131,6 @@ class FirebaseDataSource {
     try {
       final snapshot = await _firestore.collection('resutants').get();
 
-      // print("Documents Count: ${snapshot.docs.length}");
-
       for (var doc in snapshot.docs) {
         resturants.add(ResturantModel.fromJson(doc.data()));
       }

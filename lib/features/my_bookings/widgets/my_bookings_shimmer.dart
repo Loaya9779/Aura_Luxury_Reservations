@@ -1,5 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MyBookingsShimmer extends StatelessWidget {
@@ -7,18 +8,16 @@ class MyBookingsShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
     return ListView.builder(
       shrinkWrap: true,
       itemCount: 2,
       itemBuilder: (context, index) {
         return Container(
-          padding: EdgeInsets.all(20),
-          height: height * .25,
+          padding: EdgeInsets.all(20.w),
+          height: 200.h,
           decoration: BoxDecoration(
-            border: Border.all(width: 1, color: AppColors.surfaceHighest),
-            borderRadius: BorderRadius.circular(15),
+            border: Border.all(width: 1.w, color: AppColors.surfaceHighest),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Shimmer.fromColors(
             baseColor: AppColors.gold,
@@ -29,21 +28,31 @@ class MyBookingsShimmer extends StatelessWidget {
               children: [
                 // image
                 Container(
-                  height: height * 0.12,
-                  width: width * 0.25,
+                  height: 50.h,
+                  width: 50.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                 ),
 
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Column(
                   children: [
                     //Name
                     Container(
-                      height: height * 0.03,
-                      width: width * 0.20,
+                      height: 10.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    Container(
+                      height: 10.h,
+                      width: 30.w,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -52,8 +61,8 @@ class MyBookingsShimmer extends StatelessWidget {
                     const SizedBox(height: 20),
 
                     Container(
-                      height: height * 0.03,
-                      width: width * 0.20,
+                      height: 10.h,
+                      width: 30.w,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -62,18 +71,8 @@ class MyBookingsShimmer extends StatelessWidget {
                     const SizedBox(height: 20),
 
                     Container(
-                      height: height * 0.03,
-                      width: width * 0.20,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-
-                    Container(
-                      height: height * 0.03,
-                      width: width * 0.20,
+                      height: 10.h,
+                      width: 30.w,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -82,12 +81,12 @@ class MyBookingsShimmer extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
 
                 // Rebook Button
                 Container(
-                  height: height * 0.03,
-                  width: width * 0.20,
+                  height: 10.h,
+                  width: 30.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(6),
