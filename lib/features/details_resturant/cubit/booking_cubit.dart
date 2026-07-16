@@ -30,6 +30,7 @@ class BookingCubit extends Cubit<BookingState> {
         context: context,
         booking: BookingModel(
           restaurant: restaurant,
+          status: "",
           date: selectedDate!,
           time: selectedTime!,
           guestCount: guests,
