@@ -1,7 +1,9 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/features/home/screen/home_screen.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,13 +26,16 @@ class _SplashScreenState extends State<SplashScreen>
     )..forward();
 
     _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
+      if (status == AnimationStatus.completed && mounted) {
+        final bool isLoggedIn = Hive.box(
+          'appBox',
+        ).get('isLoggedIn', defaultValue: false);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) {
-              return const OnboardingScreen();
-            },
+            builder: (_) =>
+                isLoggedIn ? const HomeScreen() : const OnboardingScreen(),
           ),
         );
       }
@@ -90,13 +95,12 @@ class _SplashScreenState extends State<SplashScreen>
                     animation: _controller,
                     builder: (context, child) {
                       return SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.6,
+                        width: size.width * 0.6,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: LinearProgressIndicator(
                             value: _controller.value,
                             minHeight: 2,
-
                             backgroundColor: Colors.white.withValues(
                               alpha: 0.15,
                             ),
@@ -111,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen>
 
                   SizedBox(height: size.height * 0.02),
 
-                  Text(
+                  const Text(
                     "Loading Elegance...",
                     style: TextStyle(color: AppColors.primary, fontSize: 16),
                   ),
