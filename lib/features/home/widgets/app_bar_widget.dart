@@ -28,9 +28,7 @@ class AppBarWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, "/profile");
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.notifications_none_rounded,
               color: AppColors.primary,
