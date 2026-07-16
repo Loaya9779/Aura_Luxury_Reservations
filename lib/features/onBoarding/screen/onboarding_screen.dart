@@ -4,14 +4,15 @@ import 'package:aura_luxury_reservations/features/onBoarding/widgets/already_mem
 import 'package:aura_luxury_reservations/features/onBoarding/widgets/animated_dots.dart';
 import 'package:aura_luxury_reservations/features/onBoarding/widgets/text_pageview_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-
+    print("MediaQuery: ${MediaQuery.of(context).size}");
+    print("ScreenUtil: ${ScreenUtil().screenWidth}");
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -24,13 +25,13 @@ class OnboardingScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: EdgeInsets.all(24.w),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text("LUMIÈRE", style: AppStyle.labelLarge),
-                  SizedBox(height: height * 0.25),
+                  SizedBox(height: 150.h),
                   TextPageViewBuilder(),
                   AnimatedDots(),
                   SizedBox(height: 30),
@@ -39,7 +40,7 @@ class OnboardingScreen extends StatelessWidget {
                     onPressed: () =>
                         Navigator.pushReplacementNamed(context, "/signup"),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   AlreadyMemberRow(),
                 ],
               ),
