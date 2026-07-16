@@ -1,3 +1,4 @@
+import 'package:aura_luxury_reservations/core/data_source/firebase_data_source.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/forget_password/forget_password_screen.dart';
 import 'package:aura_luxury_reservations/features/auth/login/login_screen.dart';
@@ -27,8 +28,8 @@ void main() async {
 
   await Hive.openBox('appBox');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
-  // await firebaseDataSource.addResturants();
+  //FirebaseDataSource firebaseDataSource = FirebaseDataSource();
+  //await firebaseDataSource.addResturants();
   bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
 
   runApp(MainApp(isLoggedIn: isLoggedIn));
@@ -64,24 +65,9 @@ class MainApp extends StatelessWidget {
             '/login': (_) => const LoginScreen(),
             '/forget-password': (_) => const ForgetPasswordScreen(),
             '/home': (_) => const HomeScreen(),
-            '/resturants': (_) => const ResturantsScreen(),
+            '/resturants': (_) => ResturantsScreen(),
             '/my-bookings': (_) => const MyBookingsScreen(),
             '/profile': (_) => const ProfileScreen(),
-          },
-          onGenerateRoute: (settings) {
-            if (settings.name == '/confirmation-booking') {
-              final args = settings.arguments as Map<String, dynamic>;
-
-              return MaterialPageRoute(
-                builder: (context) => ConfirmationScreen(
-                  restaurantName: args['restaurantName'],
-                  date: args['date'],
-                  time: args['time'],
-                  guestsCount: args['guestsCount'],
-                ),
-              );
-            }
-            return null;
           },
         ),
       ),
