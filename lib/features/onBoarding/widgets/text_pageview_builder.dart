@@ -3,6 +3,7 @@ import 'package:aura_luxury_reservations/features/onBoarding/helper/onboarding_i
 import 'package:aura_luxury_reservations/features/onBoarding/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextPageViewBuilder extends StatefulWidget {
   const TextPageViewBuilder({super.key});
@@ -29,7 +30,7 @@ class _TextPageViewBuilderState extends State<TextPageViewBuilder> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 350.h,
       child: PageView.builder(
         controller: _pageController,
         onPageChanged: context.read<OnboardingCubit>().setPage,

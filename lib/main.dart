@@ -19,9 +19,11 @@ import 'package:aura_luxury_reservations/features/onBoarding/screen/onboarding_s
 import 'package:aura_luxury_reservations/features/splash/screen/splash_screen.dart';
 import 'package:aura_luxury_reservations/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -33,7 +35,23 @@ void main() async {
   // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
   // await firebaseDataSource.addResturants();
 
-  runApp(MainApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) {
+        return ScreenUtilInit(
+          designSize: const Size(390, 882),
+          useInheritedMediaQuery: true,
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            ScreenUtil.configure(data: MediaQuery.of(context));
+            return MainApp();
+          },
+        );
+      },
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -51,28 +69,22 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => MyBookingsCubit()),
         BlocProvider(create: (_) => NavigationCubit()),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(390, 882),
-        useInheritedMediaQuery: true,
-        minTextAdapt: true,
-        splitScreenMode: true,
-        child: MaterialApp(
-          theme: ThemeData(splashColor: Colors.transparent),
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/splash',
-          routes: {
-            '/splash': (_) => const SplashScreen(),
-            '/onboarding': (_) => const OnboardingScreen(),
-            '/signup': (_) => const SignupScreen(),
-            '/login': (_) => const LoginScreen(),
-            '/forget-password': (_) => const ForgetPasswordScreen(),
-            '/navigation': (_) => const NavigationScreen(),
-            '/home': (_) => const HomeScreen(),
-            '/resturants': (_) => ResturantsScreen(),
-            '/my-bookings': (_) => const MyBookingsScreen(),
-            '/profile': (_) => const ProfileScreen(),
-          },
-        ),
+      child: MaterialApp(
+        theme: ThemeData(splashColor: Colors.transparent),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/splash',
+        routes: {
+          '/splash': (_) => const SplashScreen(),
+          '/onboarding': (_) => const OnboardingScreen(),
+          '/signup': (_) => const SignupScreen(),
+          '/login': (_) => const LoginScreen(),
+          '/forget-password': (_) => const ForgetPasswordScreen(),
+          '/navigation': (_) => const NavigationScreen(),
+          '/home': (_) => const HomeScreen(),
+          '/resturants': (_) => const ResturantsScreen(),
+          '/my-bookings': (_) => const MyBookingsScreen(),
+          '/profile': (_) => const ProfileScreen(),
+        },
       ),
     );
   }
