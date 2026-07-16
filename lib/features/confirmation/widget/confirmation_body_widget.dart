@@ -49,7 +49,7 @@ class ConfirmationBodyWidget extends StatelessWidget {
                   child: CustomButtomWidget(
                     title: 'Done',
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/home");
+                      Navigator.pushReplacementNamed(context, "/navigation");
                     },
                   ),
                 ),

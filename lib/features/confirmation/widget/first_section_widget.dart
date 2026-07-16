@@ -1,4 +1,3 @@
-import 'package:aura_luxury_reservations/features/confirmation/widget/confirmation_body_widget.dart';
 import 'package:aura_luxury_reservations/features/confirmation/widget/ticket_data_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ticketcher/ticketcher.dart';

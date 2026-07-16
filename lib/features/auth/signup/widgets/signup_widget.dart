@@ -40,6 +40,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return Form(
+      key: formKey,
       child: Column(
         children: [
           CustomTextField(
@@ -48,30 +49,30 @@ class _SignupWidgetState extends State<SignupWidget> {
             validator: Validation.validateName,
             controller: _nameController,
           ),
-      
+
           const SizedBox(height: 16),
-      
+
           CustomTextField(
             hintText: '01*********',
             labelText: 'Phone Number',
             validator: Validation.validatePhone,
             controller: _phoneNumberController,
           ),
-      
+
           const SizedBox(height: 16),
-      
+
           CustomTextField(
             hintText: 'concierge@lumiere.com',
             labelText: 'Email',
             validator: Validation.validateEmail,
             controller: _emailController,
           ),
-      
+
           const SizedBox(height: 16),
           BlocBuilder<AuthCubit, AuthStates>(
             builder: (context, state) {
               final cubit = context.read<AuthCubit>();
-      
+
               return CustomTextField(
                 hintText: '••••••••',
                 labelText: 'Password',

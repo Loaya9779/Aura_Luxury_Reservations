@@ -1,4 +1,3 @@
-import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 

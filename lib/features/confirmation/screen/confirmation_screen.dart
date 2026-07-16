@@ -1,12 +1,7 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
-import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/features/confirmation/widget/confirmation_body_widget.dart';
-import 'package:aura_luxury_reservations/features/confirmation/widget/custom_button_widget.dart';
-import 'package:aura_luxury_reservations/features/confirmation/widget/qr_ticket_widget.dart';
-import 'package:aura_luxury_reservations/features/confirmation/widget/tiecket_info_widget.dart';
 import 'package:aura_luxury_reservations/features/home/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:ticketcher/ticketcher.dart';
 
 class ConfirmationScreen extends StatelessWidget {
   final String restaurantName;
