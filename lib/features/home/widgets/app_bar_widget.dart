@@ -29,7 +29,7 @@ class AppBarWidget extends StatelessWidget {
           padding: const EdgeInsets.only(right: 16.0),
           child: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/my-bookings");
+              Navigator.pushNamed(context, "/profile");
             },
             icon: const Icon(
               Icons.notifications_none_rounded,
