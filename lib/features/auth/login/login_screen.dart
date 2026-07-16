@@ -3,10 +3,7 @@ import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/auth/login/widgets/login_widget.dart';
 import 'package:aura_luxury_reservations/features/auth/widgets/custom_text_buttom.dart';
-import 'package:aura_luxury_reservations/features/auth/widgets/custom_text_field.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
-import 'package:aura_luxury_reservations/core/validator/validation.dart';
-import 'package:aura_luxury_reservations/core/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
