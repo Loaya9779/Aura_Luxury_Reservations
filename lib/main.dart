@@ -28,14 +28,12 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // FirebaseDataSource firebaseDataSource = FirebaseDataSource();
   // await firebaseDataSource.addResturants();
-  bool isLoggedIn = Hive.box('appBox').get('isLoggedIn', defaultValue: false);
 
-  runApp(MainApp(isLoggedIn: isLoggedIn));
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  final bool isLoggedIn;
-  const MainApp({super.key, required this.isLoggedIn});
+  const MainApp({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +53,7 @@ class MainApp extends StatelessWidget {
         splitScreenMode: true,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: isLoggedIn ? '/home' : '/splash',
+          initialRoute: '/splash',
           routes: {
             '/splash': (_) => const SplashScreen(),
             '/onboarding': (_) => const OnboardingScreen(),
