@@ -28,9 +28,7 @@ class ResturantModel {
     'rating': rating,
   };
 
-  factory ResturantModel.fromJson(DocumentSnapshot doc) {
-    final json = doc.data() as Map<String, dynamic>;
-
+  factory ResturantModel.fromJson(Map<String, dynamic> json) {
     return ResturantModel(
       // id: doc.id,
       name: json['name'] as String,
