@@ -49,10 +49,6 @@ class BookingDetailsScreen extends StatelessWidget {
     return BlocListener<BookingCubit, BookingState>(
       listener: (context, state) {
         if (state is BookingCompleted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Reservation Confirmed")),
-          );
-
           Navigator.push(
             context,
             MaterialPageRoute(
