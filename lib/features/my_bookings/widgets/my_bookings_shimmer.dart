@@ -12,7 +12,7 @@ class MyBookingsShimmer extends StatelessWidget {
     final double width = MediaQuery.sizeOf(context).width;
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 3,
+      itemCount: 2,
       itemBuilder: (context, index) {
         return Container(
           padding: EdgeInsets.all(20),

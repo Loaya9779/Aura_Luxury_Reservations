@@ -27,10 +27,8 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       await firebaseDataSource.signUp(email, password, userName, phone);
       emit(SignUpSuccessState());
-    }  on FirebaseAuthException catch (e) {
-  emit(AuthErrorState(
-    error: FirebaseErrorHandler.getMessage(e),
-  ));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthErrorState(error: FirebaseErrorHandler.getMessage(e)));
     }
   }
 
@@ -58,8 +56,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
   }
 
-  void logout() async {
+  Future<void> logout() async {
     await hiveCache.logout();
+    await firebaseDataSource.signOut();
     emit(LogOutSuccessState());
   }
 }
