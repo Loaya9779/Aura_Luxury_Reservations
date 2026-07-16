@@ -29,7 +29,7 @@ class BookingModel {
   factory BookingModel.fromJson(Map<String, dynamic> json) {
     return BookingModel(
       restaurant: ResturantModel.fromJson(json["restaurant"]),
-      status: json["status"]??"completed",
+      status: json["status"]??"COMPLETED",
       date: DateTime.parse(json["date"]),
       time: TimeOfDay(
         hour: json["time"]["hour"],
