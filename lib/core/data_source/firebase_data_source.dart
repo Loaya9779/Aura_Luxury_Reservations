@@ -88,7 +88,7 @@ class FirebaseDataSource {
         description:
             "Mizu Zen offers a refined Japanese dining experience where traditional flavors meet modern presentation. Enjoy premium sushi, fresh sashimi, and signature dishes crafted with the finest ingredients in a peaceful, elegant atmosphere.",
         category: "American",
-        location: "Le Marais, Paris, France",
+        location: "Paris, France",
         rating: "4.8",
       ),
 
@@ -99,7 +99,7 @@ class FirebaseDataSource {
         description:
             "L'Eclat d'Or delivers an exceptional fine dining experience inspired by classic French cuisine. Every plate is prepared with seasonal ingredients, artistic presentation, and impeccable service to create unforgettable moments.",
         category: "Japanese",
-        location: "Champs-Élysées, Paris, France",
+        location: "Lyon, France",
         rating: "4.7",
       ),
 
@@ -110,7 +110,7 @@ class FirebaseDataSource {
         description:
             "L'Oiseau Bleu redefines contemporary French gastronomy under the vision of Chef Marcelle Vasseur. Every dish is a silent symphony of seasonal ingredients sourced from exclusive coastal estates. The atmosphere is curated for those who value discretion as much as culinary innovation.",
         category: "Modern French",
-        location: "Le Vieux-Port, Marseille, France",
+        location: "Marseille, France",
         rating: "4.9",
       ),
     ];
