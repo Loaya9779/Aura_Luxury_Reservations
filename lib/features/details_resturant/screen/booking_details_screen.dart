@@ -1,5 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
+import 'package:aura_luxury_reservations/features/confirmation/screen/confirmation_screen.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/satates.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/widgets/booking_date_time.dart';
@@ -10,6 +11,7 @@ import 'package:aura_luxury_reservations/features/view_resturant/model/resturant
 import 'package:aura_luxury_reservations/features/view_resturant/widget/custom_buttom_book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
   final ResturantModel restaurant;
@@ -51,7 +53,17 @@ class BookingDetailsScreen extends StatelessWidget {
             const SnackBar(content: Text("Reservation Confirmed")),
           );
 
-          Navigator.pushNamed(context, '/confirmation-booking');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ConfirmationScreen(
+                restaurantName: restaurant.name,
+                date: DateFormat("EEEE, MMM d").format(state.date),
+                time: state.time.format(context),
+                guestsCount: state.guests,
+              ),
+            ),
+          );
         }
 
         if (state is BookingError) {
@@ -69,33 +81,25 @@ class BookingDetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BookingImage(image: restaurant.image),
-
               const SizedBox(height: 20),
-
               BookingInfo(
                 name: restaurant.name,
                 description: restaurant.description,
               ),
-
               const SizedBox(height: 30),
-
               BookingDateTime(
                 selectedDate: cubit.selectedDate,
                 selectedTime: cubit.selectedTime,
                 onDateTap: () => _pickDate(context, cubit),
                 onTimeTap: () => _pickTime(context, cubit),
               ),
-
               const SizedBox(height: 30),
-
               GuestCounter(
                 guests: cubit.guests,
                 onAdd: cubit.increaseGuests,
                 onRemove: cubit.decreaseGuests,
               ),
-
               const SizedBox(height: 40),
-
               CustomButtomBook(
                 title: 'Confirm Booking',
                 onPressed: () {
