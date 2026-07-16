@@ -133,11 +133,11 @@ class FirebaseDataSource {
 
       // print("Documents Count: ${snapshot.docs.length}");
 
-      // for (var doc in snapshot.docs) {
-      //   resturants.add(ResturantModel.fromJson(doc.data()));
-      // }
+      for (var doc in snapshot.docs) {
+        resturants.add(ResturantModel.fromJson(doc.data()));
+      }
 
-      return snapshot.docs.map((doc) => ResturantModel.fromJson(doc)).toList();
+      return resturants;
     } catch (e) {
       print("firebase: $e");
       return [];
