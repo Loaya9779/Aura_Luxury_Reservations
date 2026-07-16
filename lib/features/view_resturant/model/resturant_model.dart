@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class ResturantModel {
   // final String? id;
   final String name;
