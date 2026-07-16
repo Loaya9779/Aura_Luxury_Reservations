@@ -42,6 +42,14 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                   if (state is MybookingsLoadingState) {
                     return MyBookingsShimmer();
                   } else if (state is MybookingsSuccessState) {
+                    if (state.mybookings.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "You have no bookings yet.",
+                          style: AppStyle.bodyLarge,
+                        ),
+                      );
+                    }
                     return ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
