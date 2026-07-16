@@ -6,11 +6,13 @@ class CustomListTile extends StatelessWidget {
   final IconData icon;
   final String title;
   final bool isSignout;
+  final void Function()? onTap;
   const CustomListTile({
     super.key,
     required this.icon,
     required this.title,
     required this.isSignout,
+    this.onTap,
   });
 
   @override
@@ -24,7 +26,7 @@ class CustomListTile extends StatelessWidget {
       title: Text(title),
       trailing: isSignout ? null : Icon(Icons.keyboard_arrow_right),
       contentPadding: EdgeInsets.zero,
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

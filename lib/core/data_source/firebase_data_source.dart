@@ -71,6 +71,14 @@ class FirebaseDataSource {
     }
   }
 
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Future<void> addResturants() async {
     final List<ResturantModel> resturants = [
       ResturantModel(

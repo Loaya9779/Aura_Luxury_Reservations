@@ -1,11 +1,13 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
+import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/custom_list_tile.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/profile_booking_history_container.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/profile_picture_widget.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/view_all_history_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -64,6 +66,10 @@ class ProfileScreen extends StatelessWidget {
                       icon: Icons.logout,
                       title: "Sign Out",
                       isSignout: true,
+                      onTap: () {
+                        context.read<AuthCubit>().logout();
+                        Navigator.pushReplacementNamed(context, "/login");
+                      },
                     ),
                   ],
                 ),
