@@ -30,6 +30,8 @@ class SearchResultsWidget extends StatelessWidget {
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: results.length,
+            padding: EdgeInsets.all(8),
+
             itemBuilder: (_, index) {
               final restaurant = results[index];
 
