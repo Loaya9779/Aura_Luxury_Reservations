@@ -23,6 +23,7 @@ dependencies:
 
 dev_dependencies:
   flutter_native_splash: ^2.4.6
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
@@ -46,3 +47,12 @@ flutter:
 
   assets:
     - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  image_path: "assets/images/app_logo.png"
+
+  adaptive_icon_background: "#0D0D0D"
+  adaptive_icon_foreground: "assets/images/app_logo.png"
