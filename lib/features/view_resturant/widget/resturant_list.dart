@@ -5,6 +5,7 @@ import 'package:aura_luxury_reservations/features/view_resturant/cubit/states.da
 import 'package:aura_luxury_reservations/features/view_resturant/widget/restaurant_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResturantList extends StatelessWidget {
   const ResturantList({super.key});
@@ -26,10 +27,10 @@ class ResturantList extends StatelessWidget {
               final restaurant = state.resturants[index];
 
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
                 decoration: BoxDecoration(
                   color: const Color(0xff171717),
-                  borderRadius: BorderRadius.circular(28),
+                  borderRadius: BorderRadius.circular(28.r),
                   border: Border.all(
                     color: Colors.white.withValues(alpha: .08),
                   ),
@@ -37,8 +38,8 @@ class ResturantList extends StatelessWidget {
                 child: Column(
                   children: [
                     ClipRRect(
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(28),
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(28.r),
                       ),
                       child: Stack(
                         children: [
@@ -66,47 +67,47 @@ class ResturantList extends StatelessWidget {
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: EdgeInsets.all(18.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Positioned(
-                                  top: 16,
-                                  right: 16,
+                                  top: 16.h,
+                                  right: 16.w,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 15,
-                                      vertical: 6,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 15.w,
+                                      vertical: 6.h,
                                     ),
                                     decoration: BoxDecoration(
                                       color: Colors.black.withValues(
                                         alpha: .35,
                                       ),
-                                      borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(30.r),
                                     ),
                                     child: Text(
                                       restaurant.category,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         color: Color(0xffE5C75D),
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15,
+                                        fontSize: 15.sp,
                                       ),
                                     ),
                                   ),
                                 ),
                                 Positioned(
-                                  top: 16,
-                                  left: 16,
+                                  top: 16.h,
+                                  left: 16.w,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 15,
-                                      vertical: 6,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 15.w,
+                                      vertical: 6.h,
                                     ),
                                     decoration: BoxDecoration(
                                       color: Colors.black.withValues(
                                         alpha: .35,
                                       ),
-                                      borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(30.r),
                                     ),
                                     child: Row(
                                       children: [
@@ -118,10 +119,10 @@ class ResturantList extends StatelessWidget {
                                         const SizedBox(width: 6),
                                         Text(
                                           restaurant.rating.toString(),
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             color: Color(0xffE5C75D),
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                                            fontSize: 15.sp,
                                           ),
                                         ),
                                       ],
@@ -136,13 +137,13 @@ class ResturantList extends StatelessWidget {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: EdgeInsets.all(12.r),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.w),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -172,15 +173,15 @@ class ResturantList extends StatelessWidget {
                               );
                             },
                             child: Container(
-                              margin: EdgeInsets.all(8),
-                              width: width * 0.28,
-                              height: height * 0.06,
+                              margin: EdgeInsets.all(8.r),
+                              width: 110.w,
+                              height: 50.h,
                               decoration: BoxDecoration(
                                 color: const Color(0xff3B3521),
-                                borderRadius: BorderRadius.circular(26),
+                                borderRadius: BorderRadius.circular(26.r),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8),
+                                padding: EdgeInsets.all(8.r),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -188,7 +189,7 @@ class ResturantList extends StatelessWidget {
                                       "BOOK NOW",
                                       style: TextStyle(
                                         color: Color(0xffE5C75D),
-                                        fontSize: 9,
+                                        fontSize: 9.sp,
                                         fontWeight: FontWeight.bold,
                                         letterSpacing: 1,
                                       ),

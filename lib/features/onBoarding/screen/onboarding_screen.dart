@@ -11,8 +11,6 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("MediaQuery: ${MediaQuery.of(context).size}");
-    print("ScreenUtil: ${ScreenUtil().screenWidth}");
     return Scaffold(
       body: Container(
         width: double.infinity,

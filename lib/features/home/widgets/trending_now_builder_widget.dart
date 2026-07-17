@@ -3,6 +3,7 @@ import 'package:aura_luxury_reservations/features/home/cubit/satates.dart';
 import 'package:aura_luxury_reservations/features/home/widgets/restaurant_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendingNowBuilderWidget extends StatelessWidget {
   const TrendingNowBuilderWidget({
@@ -31,8 +32,8 @@ class TrendingNowBuilderWidget extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Center(
                 child: RestaurantCardWidget(
-                  width: width,
-                  height: height,
+                  width: width.w,
+                  height: height.h,
                   resturant: state.restaurants[index],
                   isTrending: true,
                 ),

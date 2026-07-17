@@ -1,9 +1,10 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/screen/booking_details_screen.dart';
 import 'package:aura_luxury_reservations/features/home/cubit/home_cubit.dart';
-import 'package:aura_luxury_reservations/features/home/widgets/search_result_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchResultsWidget extends StatelessWidget {
   const SearchResultsWidget({super.key, required this.focusNode});
@@ -18,43 +19,39 @@ class SearchResultsWidget extends StatelessWidget {
     }
 
     return Positioned(
-      top: 95,
-      left: 24,
-      right: 24,
+      top: 90.h,
+      left: 24.w,
+      right: 24.w,
       child: Material(
         elevation: 10,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
         color: AppColors.surfaceContainer,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 300),
+          constraints: BoxConstraints(maxHeight: 300.h),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: results.length,
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(8.w),
 
             itemBuilder: (_, index) {
               final restaurant = results[index];
 
               return ListTile(
                 leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                   child: Image.network(
                     restaurant.image,
-                    width: 55,
-                    height: 55,
+                    width: 55.w,
+                    height: 55.h,
                     fit: BoxFit.cover,
                   ),
                 ),
                 title: Text(
                   restaurant.name,
-                  style: const TextStyle(color: Colors.white),
+                  style: AppStyle.headlineExtraSmall,
                 ),
-                subtitle: Text(
-                  restaurant.location,
-                  style: const TextStyle(color: Colors.grey),
-                ),
+                subtitle: Text(restaurant.location, style: AppStyle.bodySmall),
                 onTap: () {
-                  //NAV
                   Navigator.push(
                     context,
                     MaterialPageRoute(

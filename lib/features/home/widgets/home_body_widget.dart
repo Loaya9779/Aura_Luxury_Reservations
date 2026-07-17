@@ -6,6 +6,7 @@ import 'package:aura_luxury_reservations/features/home/widgets/search_textfield_
 import 'package:aura_luxury_reservations/features/home/widgets/trending_now_builder_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   const HomeBodyWidget({
@@ -36,9 +37,9 @@ class HomeBodyWidget extends StatelessWidget {
                 context.read<HomeCubit>().searchRestaurants(value);
               },
             ),
-            SizedBox(height: height * 0.02),
-    
-            SizedBox(height: height * 0.01),
+            SizedBox(height: 20.h),
+
+            //SizedBox(height: height * 0.01),
             HomeTitleWidget(
               width: width,
               height: height,
@@ -49,18 +50,18 @@ class HomeBodyWidget extends StatelessWidget {
                 Navigator.pushNamed(context, "/resturants");
               },
             ),
-            SizedBox(height: height * 0.03),
-            FeaturedForYouBuilderWidget(height: height, width: width),
-            DividerWidget(height: height),
+            SizedBox(height: 20.h),
+            FeaturedForYouBuilderWidget(height: height.h, width: width.w),
+            DividerWidget(height: height.h),
             HomeTitleWidget(
-              width: width,
-              height: height,
+              width: width.w,
+              height: height.h,
               title: 'Trending Now 🔥',
               subtitle: 'Trending Restaurants nowadays',
             ),
-            SizedBox(height: height * 0.03),
-    
-            TrendingNowBuilderWidget(width: width, height: height),
+            SizedBox(height: 20.h),
+
+            TrendingNowBuilderWidget(width: width.w, height: height.h),
           ],
         ),
       ],

@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: EdgeInsets.all(24.w),
               child: HomeBodyWidget(
                 controller: _controller,
                 focusNode: _focusNode,
