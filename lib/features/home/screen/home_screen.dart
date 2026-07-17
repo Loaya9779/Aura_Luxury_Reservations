@@ -3,6 +3,7 @@ import 'package:aura_luxury_reservations/features/home/widgets/app_bar_widget.da
 import 'package:aura_luxury_reservations/features/home/widgets/home_body_widget.dart';
 import 'package:aura_luxury_reservations/features/home/widgets/search_results_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -41,14 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(65),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(65.h),
           child: AppBarWidget(isHome: true),
         ),
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: EdgeInsets.all(24.w),
               child: HomeBodyWidget(
                 controller: _controller,
                 focusNode: _focusNode,

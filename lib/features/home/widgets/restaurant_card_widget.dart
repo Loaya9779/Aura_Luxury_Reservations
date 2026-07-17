@@ -2,6 +2,7 @@ import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/screen/booking_details_screen.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/model/resturant_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RestaurantCardWidget extends StatelessWidget {
   const RestaurantCardWidget({
@@ -31,24 +32,24 @@ class RestaurantCardWidget extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: width * 0.8,
-            height: height * 0.35,
+            width: 300.w,
+            height: 300.h,
             decoration: BoxDecoration(
               color: AppColors.primary,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(30.r),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(25.r),
               child: Image.network(resturant.image, fit: BoxFit.cover),
             ),
           ),
           if (isTrending)
             Positioned(
-              top: 15,
-              right: -15,
+              top: 15.h,
+              right: -15.w,
               child: Container(
-                width: width * 0.3,
-                height: height * 0.05,
+                width: 120.w,
+                height: 45.h,
                 decoration: BoxDecoration(
                   color: Colors.black54,
                   shape: BoxShape.circle,
@@ -57,13 +58,13 @@ class RestaurantCardWidget extends StatelessWidget {
                 child: Icon(
                   Icons.workspace_premium_outlined,
                   color: AppColors.primary,
-                  size: 18,
+                  size: 18.w,
                 ),
               ),
             ),
           Positioned(
-            bottom: height * 0.03,
-            left: width * 0.05,
+            bottom: 25.h,
+            left: 20.w,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -73,14 +74,14 @@ class RestaurantCardWidget extends StatelessWidget {
                       resturant.rating.toString(),
                       style: TextStyle(
                         color: AppColors.primary,
-                        fontSize: width * 0.04,
+                        fontSize: 15.sp,
                       ),
                     ),
-                    SizedBox(width: width * 0.01),
+                    SizedBox(width: 10.w),
                     Icon(
                       Icons.star_outlined,
                       color: AppColors.primary,
-                      size: width * 0.04,
+                      size: 15.w,
                     ),
                   ],
                 ),
@@ -89,7 +90,7 @@ class RestaurantCardWidget extends StatelessWidget {
                   resturant.name,
                   style: TextStyle(
                     color: AppColors.white,
-                    fontSize: width * 0.06,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -99,7 +100,7 @@ class RestaurantCardWidget extends StatelessWidget {
                       resturant.category,
                       style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: width * 0.04,
+                        fontSize: 13.sp,
                       ),
                     ),
                     SizedBox(width: width * 0.01),
@@ -107,7 +108,7 @@ class RestaurantCardWidget extends StatelessWidget {
                       "•",
                       style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: width * 0.04,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(width: width * 0.01),
@@ -115,7 +116,7 @@ class RestaurantCardWidget extends StatelessWidget {
                       resturant.location.toString(),
                       style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: width * 0.04,
+                        fontSize: 13.sp,
                       ),
                     ),
                   ],

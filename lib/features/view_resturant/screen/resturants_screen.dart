@@ -6,6 +6,7 @@ import 'package:aura_luxury_reservations/features/home/widgets/search_textfield_
 import 'package:aura_luxury_reservations/features/view_resturant/widget/resturant_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResturantsScreen extends StatefulWidget {
   const ResturantsScreen({super.key});
@@ -40,14 +41,14 @@ class _ResturantsScreenState extends State<ResturantsScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: AppColors.background,
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(65),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(65.h),
           child: AppBarWidget(isHome: false),
         ),
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: EdgeInsets.all(24.w),
               child: Column(
                 children: [
                   SearchTextField(
@@ -57,7 +58,7 @@ class _ResturantsScreenState extends State<ResturantsScreen> {
                       context.read<HomeCubit>().searchRestaurants(value);
                     },
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
                   const Expanded(child: ResturantList()),
                 ],
               ),

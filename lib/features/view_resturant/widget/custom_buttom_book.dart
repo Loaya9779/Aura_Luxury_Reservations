@@ -16,21 +16,18 @@ class CustomButtomBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.w),
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          side: const BorderSide(
-            color: AppColors.primary,
-            width: 2,
-          ),
+          side:  BorderSide(color: AppColors.primary, width: 2.w),
           foregroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12.r),
           ),
           minimumSize: Size(double.infinity, 70.h),
         ),
-        child: Text(title , style: AppStyle.labelMedium,),
+        child: Text(title, style: AppStyle.labelMedium),
       ),
     );
   }
