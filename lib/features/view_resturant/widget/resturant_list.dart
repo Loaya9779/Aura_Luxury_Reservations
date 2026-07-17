@@ -24,9 +24,7 @@ class ResturantList extends StatelessWidget {
           return ListView.builder(
             itemCount: state.resturants.length,
             itemBuilder: (_, index) {
-              return RestaurantCard(
-                restaurant: state.resturants[index],
-              );
+              return RestaurantCard(restaurant: state.resturants[index]);
             },
           );
         }
