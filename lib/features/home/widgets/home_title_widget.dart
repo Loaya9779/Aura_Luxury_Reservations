@@ -1,8 +1,18 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
+import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTitleWidget extends StatelessWidget {
-  const HomeTitleWidget({super.key, required this.width, required this.height, required this.title, required this.subtitle, this.buttonText, this.onTap});
+  const HomeTitleWidget({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.title,
+    required this.subtitle,
+    this.buttonText,
+    this.onTap,
+  });
 
   final double width;
   final double height;
@@ -20,7 +30,7 @@ class HomeTitleWidget extends StatelessWidget {
           title,
           style: TextStyle(
             color: AppColors.white,
-            fontSize: width * 0.06,
+            fontSize: 25.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -32,20 +42,14 @@ class HomeTitleWidget extends StatelessWidget {
               subtitle,
               style: TextStyle(
                 color: AppColors.textSecondary,
-                fontSize: width * 0.04,
+                fontSize: 15.sp,
                 // fontWeight: FontWeight.w500,
               ),
             ),
             const Spacer(),
             TextButton(
               onPressed: onTap,
-              child: Text(
-                buttonText ?? "",
-                style: TextStyle(
-                  color: AppColors.primary,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              child: Text(buttonText ?? "", style: AppStyle.labelMedium),
             ),
           ],
         ),
