@@ -18,14 +18,14 @@ class SearchResultsWidget extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return Positioned(
-      top: 90.h,
-      left: 24.w,
-      right: 24.w,
-      child: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(15.r),
-        color: AppColors.surfaceContainer,
+    return Material(
+      elevation: 10,
+      borderRadius: BorderRadius.circular(15.r),
+      color: AppColors.surfaceContainer,
+      child: Positioned(
+        top: 90.h,
+        left: 24.w,
+        right: 24.w,
         child: ConstrainedBox(
           constraints: BoxConstraints(maxHeight: 300.h),
           child: ListView.builder(
