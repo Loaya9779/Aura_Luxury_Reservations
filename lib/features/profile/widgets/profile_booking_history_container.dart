@@ -15,7 +15,6 @@ class ProfileBookingHistoryContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.w),
       margin: EdgeInsets.only(top: 16.w),
-      height: 100.h,
       decoration: BoxDecoration(
         border: Border.all(width: 1.w, color: AppColors.surfaceHighest),
         borderRadius: BorderRadius.circular(12.r),
