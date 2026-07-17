@@ -1,4 +1,4 @@
-import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
+import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/auth/widgets/custom_text_field.dart';
@@ -56,7 +56,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         }
       },
       child: Scaffold(
-        appBar: const AppBarWidget(isHome: false),
+        appBar: const CustomAppBar(isCenter: false),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(

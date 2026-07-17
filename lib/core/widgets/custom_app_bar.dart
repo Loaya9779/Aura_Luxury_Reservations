@@ -21,7 +21,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
         elevation: 0,
-        title: Text('LUMIÈRE', style: AppStyle.labelLarge),
+        title: Text(
+              'LUMIÈRE',
+              style: AppStyle.headlineLarge.copyWith(
+                color: AppColors.primary
+              )
+            ),
         centerTitle: isCenter,
         leading: icon,
       ),
