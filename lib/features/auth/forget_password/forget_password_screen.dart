@@ -38,9 +38,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         if (state is ForgetPasswordSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text(
-                'Password reset link has been sent to your email.',
-              ),
+              content: Text('Password reset link has been sent to your email.'),
             ),
           );
 
@@ -48,84 +46,89 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         }
 
         if (state is AuthErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-            ),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.error)));
         }
       },
       child: Scaffold(
-        appBar: const CustomAppBar(isCenter: false),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/auth_background.png',
+        appBar: const CustomAppBar(isCenter: true),
+        body: Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/auth_background.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Forgot Password',
-                      style: AppStyle.headlineLarge.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Form(
+                  key: _formKey,
+                  child: SingleChildScrollView(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height*.5,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Forgot Password',
+                            style: AppStyle.headlineLarge.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          Text(
+                            'Enter your email address and we will send\nyou a password reset link.',
+                            textAlign: TextAlign.center,
+                            style: AppStyle.bodyMedium.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
+
+                          const SizedBox(height: 32),
+
+                          CustomTextField(
+                            controller: _emailController,
+                            labelText: 'Email',
+                            hintText: 'example@email.com',
+                            validator: Validation.validateEmail,
+                          ),
+
+                          const SizedBox(height: 32),
+
+                          BlocBuilder<AuthCubit, AuthStates>(
+                            builder: (context, state) {
+                              if (state is AuthLoadingState) {
+                                return const CircularProgressIndicator();
+                              }
+
+                              return CustomButtom(
+                                title: 'Send Reset Link',
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    context.read<AuthCubit>().forgetPassword(
+                                      _emailController.text.trim(),
+                                    );
+                                  }
+                                },
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
-
-                    const SizedBox(height: 8),
-
-                    Text(
-                      'Enter your email address and we will send\nyou a password reset link.',
-                      textAlign: TextAlign.center,
-                      style: AppStyle.bodyMedium.copyWith(
-                        color: Colors.white70,
-                      ),
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    CustomTextField(
-                      controller: _emailController,
-                      labelText: 'Email',
-                      hintText: 'example@email.com',
-                      validator: Validation.validateEmail,
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    BlocBuilder<AuthCubit, AuthStates>(
-                      builder: (context, state) {
-                        if (state is AuthLoadingState) {
-                          return const CircularProgressIndicator();
-                        }
-
-                        return CustomButtom(
-                          title: 'Send Reset Link',
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              context.read<AuthCubit>().forgetPassword(
-                                    _emailController.text.trim(),
-                                  );
-                            }
-                          },
-                        );
-                      },
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
