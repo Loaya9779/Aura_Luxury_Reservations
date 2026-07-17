@@ -9,6 +9,7 @@ import 'package:aura_luxury_reservations/features/my_bookings/widgets/my_booking
 import 'package:aura_luxury_reservations/features/my_bookings/widgets/my_bookings_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyBookingsScreen extends StatefulWidget {
   const MyBookingsScreen({super.key});
@@ -30,7 +31,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
       backgroundColor: AppColors.background,
       appBar: CustomAppBar(isCenter: true),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 25, vertical: 50),
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 25.w, vertical: 50.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

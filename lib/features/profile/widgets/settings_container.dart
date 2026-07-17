@@ -4,6 +4,7 @@ import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/profile/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsContainer extends StatelessWidget {
   const SettingsContainer({super.key});
@@ -11,10 +12,10 @@ class SettingsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: AppColors.surfaceHighest),
-        borderRadius: BorderRadius.circular(12),
+        border: Border.all(width: 1.w, color: AppColors.surfaceHighest),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
         children: [

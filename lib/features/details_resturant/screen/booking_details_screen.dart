@@ -1,5 +1,5 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
-import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
+import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:aura_luxury_reservations/features/confirmation/screen/confirmation_screen.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/booking_cubit.dart';
 import 'package:aura_luxury_reservations/features/details_resturant/cubit/satates.dart';
@@ -11,6 +11,7 @@ import 'package:aura_luxury_reservations/features/view_resturant/model/resturant
 import 'package:aura_luxury_reservations/features/view_resturant/widget/custom_buttom_book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
@@ -70,19 +71,19 @@ class BookingDetailsScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: AppColors.background,
-        appBar: CustomAppBar(isCenter: true),
+        appBar: AppBarWidget(isHome: false),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BookingImage(image: restaurant.image),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               BookingInfo(
                 name: restaurant.name,
                 description: restaurant.description,
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
               BookingDateTime(
                 selectedDate: cubit.selectedDate,
                 selectedTime: cubit.selectedTime,
@@ -95,7 +96,7 @@ class BookingDetailsScreen extends StatelessWidget {
                 onAdd: cubit.increaseGuests,
                 onRemove: cubit.decreaseGuests,
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               CustomButtomBook(
                 title: 'Confirm Booking',
                 onPressed: () {

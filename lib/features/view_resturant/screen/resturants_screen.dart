@@ -1,6 +1,6 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/features/home/cubit/home_cubit.dart';
-import 'package:aura_luxury_reservations/features/home/widgets/app_bar_widget.dart';
+import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:aura_luxury_reservations/features/home/widgets/search_results_widget.dart';
 import 'package:aura_luxury_reservations/features/home/widgets/search_textfield_widget.dart';
 import 'package:aura_luxury_reservations/features/view_resturant/widget/resturant_list.dart';

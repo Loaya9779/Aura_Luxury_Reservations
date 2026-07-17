@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class BookingImage extends StatelessWidget {
   final String image;
 
@@ -14,7 +15,7 @@ class BookingImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: Image.network(
         image,
-        height: 220,
+        
         width: double.infinity,
         fit: BoxFit.cover,
       ),

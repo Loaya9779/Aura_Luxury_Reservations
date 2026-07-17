@@ -1,9 +1,9 @@
+import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
 import 'package:aura_luxury_reservations/features/auth/widgets/custom_text_field.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
 import 'package:aura_luxury_reservations/core/validator/validation.dart';
-import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,7 +56,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         }
       },
       child: Scaffold(
-        appBar: const CustomAppBar(isCenter: true),
+        appBar: const CustomAppBar(isCenter: false),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(

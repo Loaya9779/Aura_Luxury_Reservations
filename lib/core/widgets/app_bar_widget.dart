@@ -1,15 +1,17 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppBarWidget extends StatelessWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool isHome;
   const AppBarWidget({super.key, required this.isHome});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: AppColors.background,
       leading: isHome
           ? Padding(
               padding: EdgeInsets.only(left: 18.w),
@@ -31,7 +33,7 @@ class AppBarWidget extends StatelessWidget {
               padding: EdgeInsets.only(left: 18.w),
               child: IconButton(
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, '/home');
+                  Navigator.popAndPushNamed(context, '/navigation');
                 },
                 icon: Icon(Icons.arrow_back_ios_new_outlined),
                 color: AppColors.primary,
@@ -114,4 +116,7 @@ class AppBarWidget extends StatelessWidget {
             ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(65.h);
 }
