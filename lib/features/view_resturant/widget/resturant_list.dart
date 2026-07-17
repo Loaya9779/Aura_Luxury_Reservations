@@ -12,8 +12,6 @@ class ResturantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return BlocBuilder<ResturantCubit, ResturantState>(
       builder: (context, state) {
         if (state is ResturantLoading) {
@@ -44,7 +42,7 @@ class ResturantList extends StatelessWidget {
                       child: Stack(
                         children: [
                           SizedBox(
-                            height: height * 0.3,
+                            height: 260.h,
                             width: double.infinity,
                             child: Image.network(
                               restaurant.image,
@@ -53,7 +51,7 @@ class ResturantList extends StatelessWidget {
                           ),
 
                           Container(
-                            height: height * 0.3,
+                            height: 260.h,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
@@ -71,62 +69,50 @@ class ResturantList extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Positioned(
-                                  top: 16.h,
-                                  right: 16.w,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 15.w,
-                                      vertical: 6.h,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withValues(
-                                        alpha: .35,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30.r),
-                                    ),
-                                    child: Text(
-                                      restaurant.category,
-                                      style: TextStyle(
-                                        color: Color(0xffE5C75D),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15.sp,
-                                      ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 15.w,
+                                    vertical: 6.h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withValues(alpha: .35),
+                                    borderRadius: BorderRadius.circular(30.r),
+                                  ),
+                                  child: Text(
+                                    restaurant.category,
+                                    style: TextStyle(
+                                      color: Color(0xffE5C75D),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15.sp,
                                     ),
                                   ),
                                 ),
-                                Positioned(
-                                  top: 16.h,
-                                  left: 16.w,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 15.w,
-                                      vertical: 6.h,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withValues(
-                                        alpha: .35,
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 15.w,
+                                    vertical: 6.h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withValues(alpha: .35),
+                                    borderRadius: BorderRadius.circular(30.r),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.star,
+                                        color: Color(0xffE5C75D),
+                                        size: 15,
                                       ),
-                                      borderRadius: BorderRadius.circular(30.r),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.star,
+                                      SizedBox(width: 6.w),
+                                      Text(
+                                        restaurant.rating.toString(),
+                                        style: TextStyle(
                                           color: Color(0xffE5C75D),
-                                          size: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15.sp,
                                         ),
-                                        const SizedBox(width: 6),
-                                        Text(
-                                          restaurant.rating.toString(),
-                                          style: TextStyle(
-                                            color: Color(0xffE5C75D),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15.sp,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -151,7 +137,7 @@ class ResturantList extends StatelessWidget {
                                     restaurant.location.toUpperCase(),
                                     style: AppStyle.labelSmall,
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Text(
                                     restaurant.name,
                                     style: AppStyle.headlineMedium,
@@ -194,7 +180,7 @@ class ResturantList extends StatelessWidget {
                                         letterSpacing: 1,
                                       ),
                                     ),
-                                    SizedBox(width: width * 0.03),
+                                    SizedBox(width: 5.w),
 
                                     Icon(
                                       Icons.arrow_forward,
