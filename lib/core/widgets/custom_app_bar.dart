@@ -6,26 +6,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? icon;
   final bool isCenter;
 
-  const CustomAppBar({
-    super.key,
-    this.icon,
-    required this.isCenter,
-  });
+  const CustomAppBar({super.key, this.icon, required this.isCenter});
 
   @override
-
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: true,
       backgroundColor: AppColors.background,
       surfaceTintColor: AppColors.background,
       elevation: 0,
       title: Text(
-            'LUMIÈRE',
-            style: AppStyle.headlineLarge.copyWith(
-              color: AppColors.primary
-            )
-          ),
+        'LUMIÈRE',
+        style: AppStyle.headlineLarge.copyWith(color: AppColors.primary),
+      ),
       centerTitle: isCenter,
       leading: icon,
     );
