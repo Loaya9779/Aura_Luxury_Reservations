@@ -10,6 +10,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: AppColors.background,
       leading: isHome
           ? Padding(
               padding: const EdgeInsets.only(left: 18),
@@ -114,7 +115,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             ),
     );
   }
-  
+
   @override
-  Size get preferredSize =>  Size.fromHeight(65.h);
+  Size get preferredSize => Size.fromHeight(65.h);
 }

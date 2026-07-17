@@ -1,6 +1,5 @@
 import 'package:aura_luxury_reservations/core/app_colors.dart';
 import 'package:aura_luxury_reservations/core/app_style.dart';
-import 'package:aura_luxury_reservations/core/widgets/app_bar_widget.dart';
 import 'package:aura_luxury_reservations/core/widgets/custom_app_bar.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/auth_cubit.dart';
 import 'package:aura_luxury_reservations/features/auth/cubit/states.dart';
