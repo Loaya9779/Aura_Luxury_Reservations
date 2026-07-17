@@ -19,7 +19,9 @@ class ProfileBookingHistoryListview extends StatelessWidget {
           return ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: state.mybookings.length,
+            itemCount: state.mybookings.length > 2
+                ? 2
+                : state.mybookings.length,
             itemBuilder: (context, index) {
               return ProfileBookingHistoryContainer(
                 myBooking: state.mybookings[index],
